@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-figtree: var(--ff-figtree);
+  --font-urbanist: var(--ff-urbanist);
+  --font-hand: var(--ff-hand);
+  --font-poppins: var(--ff-poppins);
+  --font-gaegu: var(--ff-gaegu);
+  --font-fuzzy: var(--ff-fuzzy);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  padding: 0;
+  overflow-x: hidden;
+  margin: 0;
+  background: #f9f9f9;
+  color: #171717;
+  font-family: var(--ff-figtree), Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* "There's always more to life..." photo strip — continuous right-to-left marquee.
+   The track holds two identical photo sets, so sliding by exactly half its
+   width (one set) loops seamlessly regardless of how many photos there are. */
+.marquee-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+}
+/* top row: travels right-to-left; bottom row: left-to-right (reverse). Slow. */
+.marquee-a {
+  animation: marqueeLeft 80s linear infinite;
+}
+.marquee-b {
+  animation: marqueeLeft 92s linear infinite reverse;
+}
+@keyframes marqueeLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-a,
+  .marquee-b {
+    animation: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* "Dropped onto the table" entrance for the UX Projects folder — Z-axis drop.
+   The fold is a top-down view of the desk. The file flies in along the Z axis
+   from right in front of the viewer's face (close = huge, via the parent's
+   `perspective`) and recedes back to Z:0 to land flat on the table, with a
+   small settle past the surface. Resting `scale` (0.85) is left untouched —
+   only the `transform`/`opacity` animate. */
+/* The folder stays fully opaque the whole time — the drop is pure Z-motion,
+   no fade. At rest (no `is-dropped`) it sits normally and visible, so it is
+   never hidden; `is-dropped` just plays the fly-in-and-bounce. */
+[data-files-drop].is-dropped {
+  animation: filesDropZ 1s cubic-bezier(0.2, 0.85, 0.3, 1) forwards;
+}
+@keyframes filesDropZ {
+  0%   { transform: translateZ(760px) rotate(-3deg);
+         animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }  /* accelerate — slams down */
+  50%  { transform: translateZ(-55px) rotate(1.8deg); }   /* hard impact on the table */
+  64%  { transform: translateZ(165px) rotate(-1.6deg); }  /* big rebound back toward the viewer */
+  76%  { transform: translateZ(-32px) rotate(0.9deg); }   /* second slam */
+  87%  { transform: translateZ(72px)  rotate(-0.4deg); }  /* smaller rebound */
+  94%  { transform: translateZ(-14px) rotate(0.2deg); }
+  100% { transform: translateZ(0)     rotate(0deg); }
+}
+
+/* When the cards are opened, the whole file slides straight down and out of
+   frame, then is gone — so the cards are all that's left. A transition (not an
+   animation) is used so the end state persists (animation `forwards` wasn't
+   holding on these elements). `transform` here is independent of the folder's
+   resting `scale` (0.85), so the size is preserved as it slides. */
+.folder-graphic,
+.back-file {
+  transition: transform 0.7s cubic-bezier(0.5, 0, 0.3, 1), opacity 0.5s ease 0.1s;
+}
+.folder-graphic.folder-gone,
+.back-file.folder-gone {
+  transform: translateY(1300px);
+  opacity: 0;
+}
+
+/* Click the hero photos to shuffle them like a stack. The two polaroids share a
+   "front spot" and a "behind spot"; clicking swaps which one occupies each. The
+   back polaroid sits ~42px left / 30px up of the front, so its transforms carry
+   a +42/+30 base offset to line the two up into one stack. z-index swaps at
+   mid-slide (transition delay) so they appear to pass over each other. */
+[data-photo] {
+  transition: transform 0.6s cubic-bezier(0.34, 1.08, 0.5, 1),
+    z-index 0s linear 0.24s;
+}
+/* resting: back tucked neatly behind the front (behind spot) — slightly
+   smaller + rotated so it reads as "further back" in the stack */
+[data-photo="back"] {
+  transform: translate(56px, 44px) scale(0.94) rotate(-2deg);
+}
+/* swapped: front recedes to the behind spot (shrinks back), back rises to the
+   front spot (grows forward) — they exchange depth, not just slide */
+[data-photo="front"].sent-back {
+  transform: translate(14px, 14px) scale(0.94) rotate(-2deg);
+  z-index: 4;
+}
+[data-photo="back"].brought-front {
+  transform: translate(42px, 30px) scale(1) rotate(0deg);
+  z-index: 6;
 }
