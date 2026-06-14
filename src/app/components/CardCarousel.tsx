@@ -13,9 +13,9 @@ import * as A from "../landing-assets";
  *
  * Rendered inside the scaled canvas, so sizes are native (1728-wide) px.
  */
-type Card = { label: string; img?: string; videos?: string[]; pos: string; bg: string; weight?: number; lx?: number; ly?: number; fs?: number };
+type Card = { label: string; img?: string; videos?: string[]; pos: string; bg: string; weight?: number; lx?: number; ly?: number; fs?: number; href?: string };
 const CARDS: Card[] = [
-  { label: "I create", videos: ["/assets/landing/create-1.mp4", "/assets/landing/create-2.mp4", "/assets/landing/create-3.mp4"], pos: "50% 50%", bg: "#222", weight: 800, lx: 44, ly: 40, fs: 42 },
+  { label: "I create", videos: ["/assets/landing/create-1.mp4", "/assets/landing/create-3.mp4", "/assets/landing/create-1.mp4"], pos: "50% 50%", bg: "#222", weight: 800, lx: 44, ly: 40, fs: 42, href: "https://www.instagram.com/anjaliiiii.dubey/" },
   { label: "I run", videos: ["/assets/landing/run-1.mp4", "/assets/landing/run-2.mp4", "/assets/landing/run-3.mp4"], pos: "50% 50%", bg: "#222" },
   { label: "I Film", videos: ["/assets/landing/film.mp4"], pos: "50% 50%", bg: "#222" },
   { label: "I play", videos: ["/assets/landing/play.mp4"], pos: "50% 50%", bg: "#222" },
@@ -186,6 +186,16 @@ export default function CardCarousel() {
         {CARDS.map((c) => (
           <div
             key={c.label}
+            onClick={c.href ? () => window.open(c.href, "_blank", "noopener,noreferrer") : undefined}
+            role={c.href ? "link" : undefined}
+            tabIndex={c.href ? 0 : undefined}
+            onKeyDown={
+              c.href
+                ? (e) => {
+                    if (e.key === "Enter") window.open(c.href, "_blank", "noopener,noreferrer");
+                  }
+                : undefined
+            }
             style={{
               position: "relative",
               flex: "0 0 auto",
@@ -195,6 +205,7 @@ export default function CardCarousel() {
               overflow: "hidden",
               background: c.bg,
               boxShadow: "0 6px 20px rgba(0,0,0,0.25)",
+              cursor: c.href ? "pointer" : "default",
             }}
           >
             {c.videos && (
