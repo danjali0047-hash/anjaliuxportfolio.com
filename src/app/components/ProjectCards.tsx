@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 /**
@@ -20,6 +19,7 @@ const PROJECTS = [
     tagline: "Simplifying domestic hiring in India",
     meta: "UX Case Study",
     thumb: "/assets/serveeze/thumb.png",
+    pdf: "/pdfs/serveeze.pdf",
   },
   {
     slug: "chop-chop",
@@ -27,6 +27,7 @@ const PROJECTS = [
     tagline: "Your go-to daily meal planner",
     meta: "Idea to deployment · 6 hours",
     thumb: "/assets/chop-chop/thumb.png",
+    pdf: "/pdfs/chop-chop.pdf",
   },
   {
     slug: "pune-metro",
@@ -34,6 +35,7 @@ const PROJECTS = [
     tagline: "A digital companion for urban commuters",
     meta: "Mobile App · UX/UI",
     thumb: "/assets/pune-metro/thumb.png",
+    pdf: "/pdfs/pune-metro.pdf",
   },
 ];
 
@@ -122,10 +124,12 @@ export default function ProjectCards() {
         const closed = `translate(${dx}px, ${dy}px) scale(0.22) rotate(${CLOSED_ROT[i]}deg)`;
         const opened = `translate(0px, 0px) rotate(${FAN[i]}deg)`;
         return (
-          <Link
+          <a
             key={p.slug}
-            href={`/projects/${p.slug}`}
-            aria-label={`${p.title} case study`}
+            href={p.pdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${p.title} case study (PDF, opens in new tab)`}
             tabIndex={open ? 0 : -1}
             style={{
               position: "absolute",
@@ -204,7 +208,7 @@ export default function ProjectCards() {
                 View case study →
               </span>
             </div>
-          </Link>
+          </a>
         );
       })}
     </div>
