@@ -17,7 +17,7 @@ type Card = { label: string; img?: string; videos?: string[]; pos: string; bg: s
 const CARDS: Card[] = [
   { label: "I create", videos: ["/assets/landing/create-1.mp4", "/assets/landing/create-3.mp4", "/assets/landing/create-1.mp4"], pos: "50% 50%", bg: "#222", weight: 800, lx: 44, ly: 40, fs: 42, href: "https://www.instagram.com/anjaliiiii.dubey/" },
   { label: "I run", videos: ["/assets/landing/run-1.mp4", "/assets/landing/run-2.mp4", "/assets/landing/run-3.mp4"], pos: "50% 50%", bg: "#222" },
-  { label: "I Film", videos: ["/assets/landing/film.mp4"], pos: "50% 50%", bg: "#222" },
+  { label: "I Film", videos: ["/assets/landing/film.mp4"], pos: "50% 50%", bg: "#222", href: "https://www.youtube.com/watch?v=9rQjUOFmK-I" },
   { label: "I play", videos: ["/assets/landing/play.mp4"], pos: "50% 50%", bg: "#222" },
   { label: "I read", videos: ["/assets/landing/read.mp4"], pos: "50% 50%", bg: "#222" },
   { label: "I pet", videos: ["/assets/landing/petdogs-1.mp4", "/assets/landing/petdogs-2.mp4", "/assets/landing/petdogs-3.mp4"], pos: "50% 50%", bg: "#222" },
