@@ -166,11 +166,28 @@ export default function CardCarousel() {
       slide(dy, () => e.preventDefault());
     };
 
+    // Lazy: the card videos (preload="none") only download + play once the
+    // carousel nears the viewport, and pause when it leaves — so the home page
+    // doesn't fetch ~140MB of video up front.
+    const setVideos = (play: boolean) => {
+      strip.querySelectorAll("video").forEach((v) => {
+        const vid = v as HTMLVideoElement;
+        if (play) void vid.play().catch(() => {});
+        else vid.pause();
+      });
+    };
+    const io = new IntersectionObserver(
+      (entries) => setVideos(entries.some((e) => e.isIntersecting)),
+      { rootMargin: "400px 0px" },
+    );
+    io.observe(strip);
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouchMove, { passive: false });
     return () => {
+      io.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("touchstart", onTouchStart);
@@ -210,20 +227,17 @@ export default function CardCarousel() {
           >
             {c.videos && (
               <div style={{ position: "absolute", inset: 0, display: "flex", gap: 4 }}>
-                {c.videos.map((vsrc) => (
+                {c.videos.map((vsrc, vi) => (
                   <video
-                    key={vsrc}
+                    key={`${vi}-${vsrc}`}
                     ref={(el) => {
-                      if (!el) return;
-                      el.muted = true; // force muted (React's `muted` attr is unreliable) so it stays silent and can autoplay
-                      void el.play().catch(() => {});
+                      if (el) el.muted = true; // force muted (React's `muted` attr is unreliable)
                     }}
                     src={vsrc}
-                    autoPlay
                     muted
                     loop
                     playsInline
-                    preload="auto"
+                    preload="none" /* don't download until the carousel scrolls into view */
                     // equal columns; cover fills each (the portrait clip's status bar gets cropped)
                     style={{ flex: "1 1 0", minWidth: 0, height: "100%", objectFit: "cover", objectPosition: c.pos, pointerEvents: "none", userSelect: "none" }}
                   />
