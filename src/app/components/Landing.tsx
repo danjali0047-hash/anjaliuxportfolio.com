@@ -590,7 +590,7 @@ export default function Frame() {
           </div>
         </div>
         <p className="[word-break:break-word] absolute font-figtree font-medium leading-[0.9] left-[calc(50%+96px)] text-[#333] text-[22px] top-[1607px] whitespace-nowrap" data-node-id="427:249">
-          Oct 2024 - Apr 2024
+          Oct 2024 - Apr 2025
         </p>
       </div>
       <p className="[word-break:break-word] absolute font-figtree font-bold leading-[normal] left-[106px] text-[#00af26] text-[64px] top-[2958px] whitespace-nowrap" data-node-id="433:403">
