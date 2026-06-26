@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { lockScroll, unlockScroll } from "./scrollLock";
 
 /**
  * Plays the "file dropped onto the table" (Z-axis) entrance on the UX Projects
@@ -82,6 +83,7 @@ export default function FilesDrop() {
 
     // --- drop trigger ---
     let armed = true;
+    let iLocked = false; // does THIS component currently hold the scroll lock?
     const timers: number[] = [];
     const play = () => {
       el.classList.remove("is-dropped");
@@ -94,10 +96,16 @@ export default function FilesDrop() {
       timers.push(window.setTimeout(() => thud(1), 500));
       timers.push(window.setTimeout(() => thud(0.5), 770));
       // freeze the page for the drop so the user can watch it land
-      document.documentElement.style.overflowY = "hidden";
+      if (!iLocked) {
+        lockScroll();
+        iLocked = true;
+      }
       timers.push(
         window.setTimeout(() => {
-          document.documentElement.style.overflowY = "";
+          if (iLocked) {
+            unlockScroll();
+            iLocked = false;
+          }
         }, 850),
       );
     };
@@ -125,14 +133,17 @@ export default function FilesDrop() {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
     return () => {
       window.clearTimeout(settle);
       timers.forEach(clearTimeout);
       gestures.forEach((g) => window.removeEventListener(g, unlock));
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      document.documentElement.style.overflowY = "";
+      if (iLocked) {
+        unlockScroll();
+        iLocked = false;
+      }
       if (raf) cancelAnimationFrame(raf);
       if (ctx) void ctx.close();
     };

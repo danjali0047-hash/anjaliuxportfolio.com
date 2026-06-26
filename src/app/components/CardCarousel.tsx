@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as A from "../landing-assets";
+import { lockScroll, unlockScroll } from "./scrollLock";
 
 /**
  * "OTHER THAN THAT" cards. Once you've scrolled the strip fully into view, the
@@ -75,9 +76,11 @@ export default function CardCarousel() {
       if (!raf) raf = requestAnimationFrame(loop);
     };
 
-    const scaleOf = () => {
-      const r = strip.getBoundingClientRect();
-      return strip.offsetWidth ? r.width / strip.offsetWidth : 1;
+    // Canvas scale only changes on resize — cache it instead of reading layout
+    // (getBoundingClientRect + offsetWidth) on every scroll/wheel/touch event.
+    let curScale = strip.offsetWidth ? strip.getBoundingClientRect().width / strip.offsetWidth : 1;
+    const measureScale = () => {
+      curScale = strip.offsetWidth ? strip.getBoundingClientRect().width / strip.offsetWidth : 1;
     };
 
     // The ONE fixed page scroll position the carousel pins at: the title resting
@@ -86,8 +89,7 @@ export default function CardCarousel() {
     // the same every time — that's what makes the stop point consistent.
     const pinScrollY = () => {
       const r = strip.getBoundingClientRect();
-      const scale = strip.offsetWidth ? r.width / strip.offsetWidth : 1;
-      return Math.round(window.scrollY + r.top - TITLE_ABOVE * scale - PIN_MARGIN);
+      return Math.round(window.scrollY + r.top - TITLE_ABOVE * curScale - PIN_MARGIN);
     };
 
     let prevY = window.scrollY;
@@ -97,42 +99,47 @@ export default function CardCarousel() {
     // otherwise animate it and we'd freeze mid-animation at a random spot — the
     // old "stops in a different place every time" bug).
     const engage = () => {
+      measureScale();
       const de = document.documentElement;
       const prevBehavior = de.style.scrollBehavior;
       de.style.scrollBehavior = "auto";
       window.scrollTo(0, pinScrollY());
-      de.style.overflowY = "hidden";
+      lockScroll();
       de.style.scrollBehavior = prevBehavior;
       engaged = true;
       prevY = window.scrollY;
     };
     const release = () => {
-      document.documentElement.style.overflowY = "";
+      unlockScroll();
       prevY = window.scrollY;
     };
 
     // Engagement is detected from the REAL scroll position crossing the pin, so
     // it catches every speed — including a fast fling that would skip a
     // delta-based catch window and "not stop".
+    let sraf = 0;
     const onScroll = () => {
-      if (engaged) return;
-      const curY = window.scrollY;
-      const pinY = pinScrollY();
-      if (curY > prevY) {
-        // scrolling down: pin when we cross it, if cards still have room forward
-        if (prevY < pinY && curY >= pinY && target < MAX - 0.5) engage();
-      } else if (curY < prevY) {
-        // scrolling up: pin when we cross it, if cards still have room to rewind
-        if (prevY > pinY && curY <= pinY && target > 0.5) engage();
-      }
-      prevY = curY;
+      if (engaged || sraf) return;
+      sraf = requestAnimationFrame(() => {
+        sraf = 0;
+        if (engaged) return;
+        const curY = window.scrollY;
+        const pinY = pinScrollY();
+        if (curY > prevY) {
+          // scrolling down: pin when we cross it, if cards still have room forward
+          if (prevY < pinY && curY >= pinY && target < MAX - 0.5) engage();
+        } else if (curY < prevY) {
+          // scrolling up: pin when we cross it, if cards still have room to rewind
+          if (prevY > pinY && curY <= pinY && target > 0.5) engage();
+        }
+        prevY = curY;
+      });
     };
 
     // While engaged, vertical input slides the cards instead of the page.
     const slide = (deltaScreen: number, preventDefault: () => void) => {
       if (!engaged) return;
-      const scale = scaleOf();
-      const next = target + deltaScreen / scale;
+      const next = target + deltaScreen / curScale;
       if (deltaScreen > 0 && next >= MAX) {
         target = MAX;
         ease();
@@ -186,14 +193,17 @@ export default function CardCarousel() {
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("resize", measureScale, { passive: true });
     return () => {
       io.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("resize", measureScale);
       if (raf) cancelAnimationFrame(raf);
-      document.documentElement.style.overflowY = "";
+      if (sraf) cancelAnimationFrame(sraf);
+      if (engaged) unlockScroll(); // release our lock if frozen at unmount
     };
   }, []);
 

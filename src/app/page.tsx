@@ -67,6 +67,7 @@ export default function Home() {
               transformOrigin: "center",
               pointerEvents: "none",
               transition: "opacity 0.45s ease, scale 0.45s cubic-bezier(0.2,0.8,0.2,1)",
+              willChange: "scale, opacity", // promote to its own layer so the drop-shadow scales instead of repainting each frame
               zIndex: 100,
             }}
           />

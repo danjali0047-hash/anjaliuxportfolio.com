@@ -150,6 +150,7 @@ export default function ProjectCards() {
               transition:
                 "transform 0.62s cubic-bezier(0.2,0.85,0.25,1), opacity 0.4s ease",
               transitionDelay: open ? `${i * 0.09}s` : `${(2 - i) * 0.05}s`,
+              willChange: open ? "transform, opacity" : undefined,
               textDecoration: "none",
             }}
           >
