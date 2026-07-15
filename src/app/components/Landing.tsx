@@ -522,7 +522,7 @@ export default function Frame() {
           <Frame1 className="bg-[rgba(255,255,255,0.31)] content-stretch cursor-pointer flex items-center justify-center px-[36px] py-[18px] rounded-[68px] transition-[transform,background-color,box-shadow] duration-200 ease-out hover:bg-[rgba(255,255,255,0.55)] hover:scale-[1.06] hover:shadow-[0px_10px_28px_rgba(0,0,0,0.28)] hover:ring-1 hover:ring-white/60 active:scale-[0.98]" />
         </a>
         <a
-          href="/pdfs/resume.pdf?v=2"
+          href="/pdfs/resume.pdf?v=3"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="View resume (PDF, opens in new tab)"
