@@ -587,7 +587,7 @@ export default function Frame() {
         <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1375px] w-[609px]">
           Designed an AI-powered meal planning platform. Collaborated with developers to ship features. Improved user retention through UX.
         </p>
-        <div className="absolute h-[100px] left-[106px] top-[1308px] w-[159px]" data-name="curvet-logo">
+        <div className="absolute h-[100px] left-[86px] top-[1308px] w-[159px]" data-name="curvet-logo">
           <img alt="Curvet" className="absolute inset-0 max-w-none object-contain size-full" src={A.imgCurvetLogo} />
         </div>
       </div>
@@ -728,9 +728,6 @@ export default function Frame() {
         <p className="[word-break:break-word] absolute font-fuzzy leading-[86.52999877929688%] left-[calc(66.67%+101.41px)] not-italic opacity-0 text-[3.13px] text-white top-[260.44px] w-[42.992px]" data-node-id="463:720">
           &ldquo;Hi, I am Roots, I stay on her table and listen to all her rants.&rdquo;
         </p>
-      </div>
-      <div className="absolute h-[84px] left-[106px] top-[1276px] w-[83px]" data-node-id="463:729" data-name="image 656">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={A.imgImage656} />
       </div>
     </div>
   );
