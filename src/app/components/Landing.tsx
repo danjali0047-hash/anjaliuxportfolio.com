@@ -620,7 +620,7 @@ export default function Frame() {
             <img alt="" className="absolute h-[209.21%] left-[-4.36%] max-w-none top-[-48.68%] w-[106.71%]" src={A.imgImage628} />
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-figtree font-medium leading-[0.9] left-[calc(50%+96px)] text-[#333] text-[22px] top-[1607px] whitespace-nowrap" data-node-id="427:249">
+        <p className="[word-break:break-word] absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1607px] whitespace-nowrap" data-node-id="427:249">
           Oct 2024 - Apr 2025
         </p>
       </div>
