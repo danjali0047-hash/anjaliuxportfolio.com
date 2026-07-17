@@ -541,86 +541,89 @@ export default function Frame() {
       <p className="[word-break:break-word] absolute font-figtree font-medium italic leading-[normal] left-[106px] text-[#848484] text-[34px] top-[1090px] w-[698px]" data-node-id="427:241">
         My Experiences
       </p>
-      <div className="absolute h-0 left-[73px] top-[1571px] w-[1197px]" data-node-id="427:246">
+      <div className="absolute h-0 left-[73px] top-[1601px] w-[1197px]" data-node-id="427:246">
         <div className="absolute inset-[-0.5px_0]">
           <img alt="" className="block max-w-none size-full" src={A.imgVector1306} />
         </div>
       </div>
-      <div className="absolute h-0 left-[73px] top-[1424px] w-[1197px]" data-node-id="427:260">
+      <div className="absolute h-0 left-[73px] top-[1454px] w-[1197px]" data-node-id="427:260">
         <div className="absolute inset-[-0.5px_0]">
           <img alt="" className="block max-w-none size-full" src={A.imgVector1306} />
         </div>
       </div>
-      <div className="absolute contents left-[118px] top-[1489px]" data-node-id="427:252">
-        <p className="[word-break:break-word] absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1454px] whitespace-nowrap" data-node-id="391:148">
+      <div className="absolute contents left-[118px] top-[1519px]" data-node-id="427:252">
+        <p className="[word-break:break-word] absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1484px] whitespace-nowrap" data-node-id="391:148">
           HECARDS
         </p>
-        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1492px] whitespace-nowrap" data-node-id="391:146">
+        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1522px] whitespace-nowrap" data-node-id="391:146">
           UI Designer
         </p>
-        <p className="[word-break:break-word] absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1460px] whitespace-nowrap" data-node-id="427:244">
+        <p className="[word-break:break-word] absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1490px] whitespace-nowrap" data-node-id="427:244">
           Jun 2025 - Jul 2025
         </p>
-        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1522px] w-[609px]" data-node-id="427:243">
+        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1552px] w-[609px]" data-node-id="427:243">
           Directed the end-to-end UI design of the website, transforming ideas into intuitive and visually cohesive digital experiences.
         </p>
-        <div className="absolute left-[106px] size-[100px] top-[1455px]" data-node-id="391:197" data-name="image 630">
+        <div className="absolute left-[106px] size-[100px] top-[1486px]" data-node-id="391:197" data-name="image 630">
           <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={A.imgImage630} />
         </div>
       </div>
       {/* NEW experience entry — placeholder copy/logo, edit these freely */}
-      <div className="absolute h-0 left-[73px] top-[1277px] w-[1197px]" data-node-id="427:246-new">
+      <div className="absolute h-0 left-[73px] top-[1307px] w-[1197px]" data-node-id="427:246-new">
         <div className="absolute inset-[-0.5px_0]">
           <img alt="" className="block max-w-none size-full" src={A.imgVector1306} />
         </div>
       </div>
-      <div className="[word-break:break-word] absolute contents left-[280px] top-[1307px]" data-name="experience-curvet">
-        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1307px] whitespace-nowrap">
+      <div className="[word-break:break-word] absolute contents left-[280px] top-[1337px]" data-name="experience-curvet">
+        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1337px] whitespace-nowrap">
           Curvet
         </p>
-        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1345px] whitespace-nowrap">
+        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1375px] whitespace-nowrap">
           Product Designer
         </p>
-        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1313px] w-[272px]">
+        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1343px] w-[272px]">
           Oct 2025 - June 2026
         </p>
-        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1375px] w-[609px]">
+        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1405px] w-[609px]">
           Designed an AI-powered meal planning platform. Collaborated with developers to ship features. Improved user retention through UX.
         </p>
-        <div className="absolute h-[100px] left-[86px] top-[1308px] w-[159px]" data-name="curvet-logo">
+        <div className="absolute h-[100px] left-[86px] top-[1339px] w-[159px]" data-name="curvet-logo">
           <img alt="Curvet" className="absolute inset-0 max-w-none object-contain size-full" src={A.imgCurvetLogo} />
         </div>
       </div>
-      <div className="[word-break:break-word] absolute contents left-[280px] top-[1160px]" data-node-id="427:254">
-        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1160px] whitespace-nowrap" data-node-id="427:255">
+      <div className="[word-break:break-word] absolute contents left-[280px] top-[1190px]" data-node-id="427:254">
+        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1190px] whitespace-nowrap" data-node-id="427:255">
           Freelancing
         </p>
-        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1198px] whitespace-nowrap" data-node-id="427:256">
+        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1228px] whitespace-nowrap" data-node-id="427:256">
           UX Designer
         </p>
-        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1166px] w-[272px]" data-node-id="427:257">
+        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1196px] w-[272px]" data-node-id="427:257">
           Dec 2025 - Present
         </p>
-        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1228px] w-[609px]" data-node-id="427:258">
+        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1258px] w-[609px]" data-node-id="427:258">
           Collaborating with freelance clients to design seamless digital experiences, from initial concepts to polished high-fidelity interfaces.
         </p>
+        <div className="absolute h-[84px] left-[106px] top-[1200px] w-[83px]" data-name="freelancing-logo">
+          <img alt="Freelancing" className="absolute inset-0 max-w-none object-contain size-full" src={A.imgFreelancingLogo} />
+        </div>
       </div>
-      <div className="absolute contents left-[112px] top-[1671px]" data-node-id="427:253">
-        <p className="[word-break:break-word] absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1601px] whitespace-nowrap" data-node-id="427:247">
+      <div className="absolute contents left-[112px] top-[1701px]" data-node-id="427:253">
+        <p className="[word-break:break-word] absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1631px] whitespace-nowrap" data-node-id="427:247">
           The Climate Troopers
         </p>
-        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1639px] whitespace-nowrap" data-node-id="427:248">
+        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1669px] whitespace-nowrap" data-node-id="427:248">
           UX Designer
         </p>
-        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1669px] w-[609px]" data-node-id="427:250">
+        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1699px] w-[609px]" data-node-id="427:250">
           Redesigned the website interactions to create a smoother user experience, while also leading form design and crafting posters and Instagram creatives.
         </p>
-        <div className="absolute h-[32.233px] left-[106px] top-[1620px] w-[126.387px]" data-node-id="391:195" data-name="image 628">
+        <div className="absolute h-[32.233px] left-[106px] top-[1667px] w-[126.387px]" data-node-id="391:195" data-name="image 628">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <img alt="" className="absolute h-[209.21%] left-[-4.36%] max-w-none top-[-48.68%] w-[106.71%]" src={A.imgImage628} />
           </div>
         </div>
-        <p className="[word-break:break-word] absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1607px] whitespace-nowrap" data-node-id="427:249">
+        <p className="[word-break:break-word] absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1637px] whitespace-nowrap" data-node-id="427:249">
           Oct 2024 - Apr 2025
         </p>
       </div>
