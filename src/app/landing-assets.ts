@@ -49,6 +49,7 @@ export const imgImage15 = "/assets/landing/Image15.png";
 export const imgImage7 = "/assets/landing/Image7.png";
 export const imgImage631 = "/assets/landing/Image631.png";
 export const imgImage630 = "/assets/landing/Image630.png";
+export const imgCurvetLogo = "/assets/landing/curvet-logo.png";
 export const imgImage628 = "/assets/landing/Image628.png";
 export const imgImage629 = "/assets/landing/Image629.png";
 export const imgImage464 = "/assets/landing/Image464.png";

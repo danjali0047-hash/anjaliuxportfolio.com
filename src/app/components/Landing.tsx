@@ -574,34 +574,34 @@ export default function Frame() {
           <img alt="" className="block max-w-none size-full" src={A.imgVector1306} />
         </div>
       </div>
-      <div className="[word-break:break-word] absolute contents left-[280px] top-[1160px]" data-name="experience-new">
-        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1160px] whitespace-nowrap">
+      <div className="[word-break:break-word] absolute contents left-[280px] top-[1307px]" data-name="experience-curvet">
+        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1307px] whitespace-nowrap">
           Curvet
         </p>
-        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1198px] whitespace-nowrap">
+        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1345px] whitespace-nowrap">
           Product Designer
         </p>
-        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1166px] w-[272px]">
-          Month Year - Month Year
+        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1313px] w-[272px]">
+          Oct 2025 - June 2026
         </p>
-        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1228px] w-[609px]">
+        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1375px] w-[609px]">
           Designed an AI-powered meal planning platform. Collaborated with developers to ship features. Improved user retention through UX.
         </p>
-        <div className="absolute flex items-center justify-center left-[106px] size-[100px] top-[1161px] rounded-[8px] bg-[#eee] border border-dashed border-[#ccc]" data-name="experience-new-logo">
-          <span className="font-figtree text-[11px] text-[#aaa]">Logo</span>
+        <div className="absolute h-[100px] left-[106px] top-[1308px] w-[159px]" data-name="curvet-logo">
+          <img alt="Curvet" className="absolute inset-0 max-w-none object-contain size-full" src={A.imgCurvetLogo} />
         </div>
       </div>
-      <div className="[word-break:break-word] absolute contents left-[280px] top-[1307px]" data-node-id="427:254">
-        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1307px] whitespace-nowrap" data-node-id="427:255">
+      <div className="[word-break:break-word] absolute contents left-[280px] top-[1160px]" data-node-id="427:254">
+        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1160px] whitespace-nowrap" data-node-id="427:255">
           Freelancing
         </p>
-        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1345px] whitespace-nowrap" data-node-id="427:256">
+        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1198px] whitespace-nowrap" data-node-id="427:256">
           UX Designer
         </p>
-        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1313px] w-[272px]" data-node-id="427:257">
+        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1166px] w-[272px]" data-node-id="427:257">
           Dec 2025 - Present
         </p>
-        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1375px] w-[609px]" data-node-id="427:258">
+        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1228px] w-[609px]" data-node-id="427:258">
           Collaborating with freelance clients to design seamless digital experiences, from initial concepts to polished high-fidelity interfaces.
         </p>
       </div>
