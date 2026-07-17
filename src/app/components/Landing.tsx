@@ -576,16 +576,16 @@ export default function Frame() {
       </div>
       <div className="[word-break:break-word] absolute contents left-[280px] top-[1160px]" data-name="experience-new">
         <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1160px] whitespace-nowrap">
-          Company Name
+          Curvet
         </p>
         <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1198px] whitespace-nowrap">
-          Your Role
+          Product Designer
         </p>
         <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1166px] w-[272px]">
           Month Year - Month Year
         </p>
         <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1228px] w-[609px]">
-          Short description of what you did in this role — replace with your own copy.
+          Designed an AI-powered meal planning platform. Collaborated with developers to ship features. Improved user retention through UX.
         </p>
         <div className="absolute flex items-center justify-center left-[106px] size-[100px] top-[1161px] rounded-[8px] bg-[#eee] border border-dashed border-[#ccc]" data-name="experience-new-logo">
           <span className="font-figtree text-[11px] text-[#aaa]">Logo</span>
