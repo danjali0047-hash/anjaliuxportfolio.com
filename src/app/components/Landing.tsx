@@ -546,39 +546,62 @@ export default function Frame() {
           <img alt="" className="block max-w-none size-full" src={A.imgVector1306} />
         </div>
       </div>
-      <div className="absolute h-0 left-[73px] top-[1405px] w-[1197px]" data-node-id="427:260">
+      <div className="absolute h-0 left-[73px] top-[1424px] w-[1197px]" data-node-id="427:260">
         <div className="absolute inset-[-0.5px_0]">
           <img alt="" className="block max-w-none size-full" src={A.imgVector1306} />
         </div>
       </div>
-      <div className="absolute contents left-[118px] top-[1470px]" data-node-id="427:252">
-        <p className="[word-break:break-word] absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1435px] whitespace-nowrap" data-node-id="391:148">
+      <div className="absolute contents left-[118px] top-[1489px]" data-node-id="427:252">
+        <p className="[word-break:break-word] absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1454px] whitespace-nowrap" data-node-id="391:148">
           HECARDS
         </p>
-        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1473px] whitespace-nowrap" data-node-id="391:146">
+        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1492px] whitespace-nowrap" data-node-id="391:146">
           UI Designer
         </p>
-        <p className="[word-break:break-word] absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1441px] whitespace-nowrap" data-node-id="427:244">
+        <p className="[word-break:break-word] absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1460px] whitespace-nowrap" data-node-id="427:244">
           Jun 2025 - Jul 2025
         </p>
-        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1503px] w-[609px]" data-node-id="427:243">
+        <p className="[word-break:break-word] absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1522px] w-[609px]" data-node-id="427:243">
           Directed the end-to-end UI design of the website, transforming ideas into intuitive and visually cohesive digital experiences.
         </p>
-        <div className="absolute left-[106px] size-[100px] top-[1436px]" data-node-id="391:197" data-name="image 630">
+        <div className="absolute left-[106px] size-[100px] top-[1455px]" data-node-id="391:197" data-name="image 630">
           <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={A.imgImage630} />
         </div>
       </div>
-      <div className="[word-break:break-word] absolute contents left-[280px] top-[1269px]" data-node-id="427:254">
-        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1269px] whitespace-nowrap" data-node-id="427:255">
+      {/* NEW experience entry — placeholder copy/logo, edit these freely */}
+      <div className="absolute h-0 left-[73px] top-[1277px] w-[1197px]" data-node-id="427:246-new">
+        <div className="absolute inset-[-0.5px_0]">
+          <img alt="" className="block max-w-none size-full" src={A.imgVector1306} />
+        </div>
+      </div>
+      <div className="[word-break:break-word] absolute contents left-[280px] top-[1160px]" data-name="experience-new">
+        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1160px] whitespace-nowrap">
+          Company Name
+        </p>
+        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1198px] whitespace-nowrap">
+          Your Role
+        </p>
+        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1166px] w-[272px]">
+          Month Year - Month Year
+        </p>
+        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1228px] w-[609px]">
+          Short description of what you did in this role — replace with your own copy.
+        </p>
+        <div className="absolute flex items-center justify-center left-[106px] size-[100px] top-[1161px] rounded-[8px] bg-[#eee] border border-dashed border-[#ccc]" data-name="experience-new-logo">
+          <span className="font-figtree text-[11px] text-[#aaa]">Logo</span>
+        </div>
+      </div>
+      <div className="[word-break:break-word] absolute contents left-[280px] top-[1307px]" data-node-id="427:254">
+        <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1307px] whitespace-nowrap" data-node-id="427:255">
           Freelancing
         </p>
-        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1307px] whitespace-nowrap" data-node-id="427:256">
+        <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1345px] whitespace-nowrap" data-node-id="427:256">
           UX Designer
         </p>
-        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1275px] w-[272px]" data-node-id="427:257">
+        <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1313px] w-[272px]" data-node-id="427:257">
           Dec 2025 - Present
         </p>
-        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1337px] w-[609px]" data-node-id="427:258">
+        <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1375px] w-[609px]" data-node-id="427:258">
           Collaborating with freelance clients to design seamless digital experiences, from initial concepts to polished high-fidelity interfaces.
         </p>
       </div>
