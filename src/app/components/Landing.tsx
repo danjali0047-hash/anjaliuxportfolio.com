@@ -604,10 +604,6 @@ export default function Frame() {
         <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1375px] w-[609px]" data-node-id="427:258">
           Collaborating with freelance clients to design seamless digital experiences, from initial concepts to polished high-fidelity interfaces.
         </p>
-        {/* Freelancing brand mark — blue "a" placeholder, aligned like the other logos (left-106, top = name+1). Swap for the real asset when available. */}
-        <div className="absolute flex items-center justify-center left-[106px] size-[100px] top-[1308px] rounded-[16px] bg-[#2f6bff]" data-name="freelancing-logo">
-          <span className="font-figtree font-bold leading-none lowercase text-white text-[56px]">a</span>
-        </div>
       </div>
       <div className="absolute contents left-[112px] top-[1671px]" data-node-id="427:253">
         <p className="[word-break:break-word] absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1601px] whitespace-nowrap" data-node-id="427:247">
