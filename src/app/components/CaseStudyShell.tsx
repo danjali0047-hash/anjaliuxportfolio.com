@@ -139,7 +139,10 @@ export default function CaseStudyShell({
           study up (less margin), lower it to zoom down (more margin) — the two
           move together, because the copy is baked into the images and can't be
           sized independently of them. */}
-      <div className="case-study-fade bg-white">
+      <div
+        className="case-study-fade"
+        style={{ background: project.pageBg ?? "#ffffff" }}
+      >
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12">
           {children}
         </div>

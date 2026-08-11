@@ -13,6 +13,12 @@ export type Project = {
   thumb: string;
   /** Kept as an optional download on the case-study page — no longer the link target. */
   pdf: string;
+  /**
+   * Page background behind the case-study column, so the margins either side
+   * continue the deck instead of framing it in white. Sampled from the deck's
+   * own edge pixels; defaults to white when unset.
+   */
+  pageBg?: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -31,6 +37,8 @@ export const PROJECTS: Project[] = [
     meta: "Idea to deployment · 6 hours",
     thumb: "/assets/chop-chop/thumb.png",
     pdf: "/pdfs/chop-chop.pdf",
+    // the deck's black — modal colour of both edge columns, and both top corners
+    pageBg: "#090909",
   },
   {
     slug: "pune-metro",
@@ -39,6 +47,8 @@ export const PROJECTS: Project[] = [
     meta: "Mobile App · UX/UI",
     thumb: "/assets/pune-metro/thumb.png",
     pdf: "/pdfs/pune-metro.pdf",
+    // the deck's dark blue — 64% of both edge columns
+    pageBg: "#0f4462",
   },
 ];
 
