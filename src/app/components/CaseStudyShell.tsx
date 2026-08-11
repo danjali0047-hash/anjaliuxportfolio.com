@@ -70,7 +70,9 @@ export default function CaseStudyShell({
           which makes body a scroll container and stops sticky children from
           ever engaging in Chrome/Safari. The spacer below reserves its height. */}
       <header className="fixed inset-x-0 top-0 z-[200] border-b border-black/[0.07] bg-[#f9f9f9]/85 backdrop-blur-md">
-        <div className="mx-auto flex h-[62px] max-w-[1500px] items-center gap-4 px-4 sm:px-8">
+        {/* same column as the artwork below, so the back arrow lines up with
+            the case study's left edge instead of floating in the margin */}
+        <div className="mx-auto flex h-[62px] max-w-[1440px] items-center gap-4 px-4 sm:px-8 lg:px-12">
           <Link
             href="/"
             onClick={goBack}
@@ -125,12 +127,27 @@ export default function CaseStudyShell({
       {/* height reserved for the fixed bar */}
       <div aria-hidden className="h-[62px]" />
 
-      {/* ── the case study itself ──────────────────────────────────────── */}
-      <div className="case-study-fade">{children}</div>
+      {/* ── the case study itself ──────────────────────────────────────────
+          The artwork is a fixed 1728px-wide design and ScaledCanvas sizes
+          itself from this container, so the container width *is* the zoom
+          control: rendered size = container / 1728.
+
+          Running it edge-to-edge is what made it read as a document zoomed to
+          fit the window. Capping at 1440 with real side padding gives the
+          column margins on any laptop and lands body copy near 15px, which is
+          normal web reading size. Raise CONTENT_MAX to zoom the whole case
+          study up (less margin), lower it to zoom down (more margin) — the two
+          move together, because the copy is baked into the images and can't be
+          sized independently of them. */}
+      <div className="case-study-fade bg-white">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12">
+          {children}
+        </div>
+      </div>
 
       {/* ── hand-off to the next case study ────────────────────────────── */}
-      <footer className="bg-[#141414] px-6 py-16 md:px-12 md:py-24">
-        <div className="mx-auto max-w-[1100px]">
+      <footer className="bg-[#141414] px-4 py-16 sm:px-8 md:py-24 lg:px-12">
+        <div className="mx-auto max-w-[1440px]">
           <p className="font-figtree text-xs font-bold uppercase tracking-[0.12em] text-[#00af26]">
             Next case study
           </p>
