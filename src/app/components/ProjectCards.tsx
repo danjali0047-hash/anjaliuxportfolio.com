@@ -1,43 +1,20 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { PROJECTS } from "@/app/projects/projects";
 
 /**
  * Click the UX Projects folder ([data-folder]) and the three case-study
- * "papers" fly out of it and fan into a row of project cards. Each card links
- * to its case study. Clicking the folder again, the backdrop, or Esc tucks
+ * "papers" fly out of it and fan into a row of project cards. Each card opens
+ * its case study as a page in this site (same tab, client-side navigation) —
+ * not a PDF in a new tab. Clicking the folder again, the backdrop, or Esc tucks
  * them back in. While open, the folder graphic ([data-files-drop]) fades
  * so the cards visually take its place.
  *
  * Rendered INSIDE the scaled canvas, so all coordinates are native (1728-wide)
  * pixels and scale with the rest of the page.
  */
-const PROJECTS = [
-  {
-    slug: "serveeze",
-    title: "Serveeze",
-    tagline: "Simplifying domestic hiring in India",
-    meta: "UX Case Study",
-    thumb: "/assets/serveeze/thumb.png",
-    pdf: "/pdfs/serveeze.pdf",
-  },
-  {
-    slug: "chop-chop",
-    title: "Chop Chop",
-    tagline: "Your go-to daily meal planner",
-    meta: "Idea to deployment · 6 hours",
-    thumb: "/assets/chop-chop/thumb.png",
-    pdf: "/pdfs/chop-chop.pdf",
-  },
-  {
-    slug: "pune-metro",
-    title: "Pune Metro",
-    tagline: "A digital companion for urban commuters",
-    meta: "Mobile App · UX/UI",
-    thumb: "/assets/pune-metro/thumb.png",
-    pdf: "/pdfs/pune-metro.pdf",
-  },
-];
 
 // layout (native px) — dark fold spans y 1774..2891 (1117 tall), width 1728
 const CARD_W = 440;
@@ -124,12 +101,10 @@ export default function ProjectCards() {
         const closed = `translate(${dx}px, ${dy}px) scale(0.22) rotate(${CLOSED_ROT[i]}deg)`;
         const opened = `translate(0px, 0px) rotate(${FAN[i]}deg)`;
         return (
-          <a
+          <Link
             key={p.slug}
-            href={p.pdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${p.title} case study (PDF, opens in new tab)`}
+            href={`/projects/${p.slug}`}
+            aria-label={`Open the ${p.title} case study`}
             tabIndex={open ? 0 : -1}
             style={{
               position: "absolute",
@@ -209,7 +184,7 @@ export default function ProjectCards() {
                 View case study →
               </span>
             </div>
-          </a>
+          </Link>
         );
       })}
     </div>

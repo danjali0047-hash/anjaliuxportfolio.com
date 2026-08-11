@@ -1,34 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PROJECTS } from "./projects";
 
 export const metadata: Metadata = {
   title: "UX Projects | Anjali Dubey",
   description: "UX case studies by Anjali Dubey — Serveeze, Chop Chop, and Pune Metro.",
 };
-
-const PROJECTS = [
-  {
-    slug: "serveeze",
-    title: "Serveeze",
-    tagline: "Simplifying domestic hiring in India",
-    meta: "UX Case Study",
-    thumb: "/assets/serveeze/thumb.png",
-  },
-  {
-    slug: "chop-chop",
-    title: "Chop Chop",
-    tagline: "Your go-to daily meal planner",
-    meta: "Idea to deployment · 6 hours",
-    thumb: "/assets/chop-chop/thumb.png",
-  },
-  {
-    slug: "pune-metro",
-    title: "Pune Metro",
-    tagline: "A digital companion for urban commuters",
-    meta: "Mobile App · UX/UI",
-    thumb: "/assets/pune-metro/thumb.png",
-  },
-];
 
 export default function ProjectsPage() {
   return (

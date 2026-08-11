@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import CaseStudyShell from "@/app/components/CaseStudyShell";
 import ScaledCanvas from "@/app/components/ScaledCanvas";
 import { SERVEEZE } from "./serveeze-data";
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ServeezePage() {
   return (
-    <main style={{ background: SERVEEZE.bg }}>
+    <CaseStudyShell slug="serveeze">
       <ScaledCanvas width={SERVEEZE.width} height={SERVEEZE.height}>
         <div
           style={{
@@ -41,14 +41,6 @@ export default function ServeezePage() {
           ))}
         </div>
       </ScaledCanvas>
-
-      {/* Floating back-to-home control */}
-      <Link
-        href="/"
-        className="font-figtree fixed bottom-6 left-6 z-50 rounded-full bg-[#222] text-white px-5 py-2.5 text-sm font-semibold shadow-lg transition-colors hover:bg-[#00af26]"
-      >
-        ← Home
-      </Link>
-    </main>
+    </CaseStudyShell>
   );
 }
