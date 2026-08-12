@@ -142,3 +142,23 @@ body {
     animation: none;
   }
 }
+
+/* Transparent click targets laid over buttons that are painted into the
+   case-study artwork (e.g. Pune Metro's "View Prototype" pill). Invisible at
+   rest so the slide looks untouched, with a soft ring on hover/focus so the
+   button reads as clickable and keyboard users can see where they are. */
+.artwork-hotspot {
+  border-radius: 9999px;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.artwork-hotspot:hover,
+.artwork-hotspot:focus-visible {
+  outline: none;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.6);
+}
+@media (prefers-reduced-motion: reduce) {
+  .artwork-hotspot {
+    transition: none;
+  }
+}
