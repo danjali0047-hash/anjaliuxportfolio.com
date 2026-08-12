@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { PROJECTS, getNextProject, getProject } from "@/app/projects/projects";
+import {
+  PROJECTS,
+  bandsToGradient,
+  getNextProject,
+  getProject,
+} from "@/app/projects/projects";
 
 /**
  * Shared chrome for every case study, so a case study reads as another room in
@@ -139,9 +144,16 @@ export default function CaseStudyShell({
           study up (less margin), lower it to zoom down (more margin) — the two
           move together, because the copy is baked into the images and can't be
           sized independently of them. */}
+      {/* This wrapper's height is exactly the artwork's rendered height (the
+          column adds no vertical padding), so a percentage-based band gradient
+          lines up with the slides at any scale. */}
       <div
         className="case-study-fade"
-        style={{ background: project.pageBg ?? "#ffffff" }}
+        style={{
+          background: project.pageBands
+            ? bandsToGradient(project.pageBands)
+            : project.pageBg ?? "#ffffff",
+        }}
       >
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12">
           {children}
