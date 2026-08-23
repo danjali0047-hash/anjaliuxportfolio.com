@@ -163,8 +163,37 @@ body {
     transform: rotate(calc(var(--tilt, 0deg) + 1.1deg));
   }
 }
-/* bulbs breathe rather than blink — a hard on/off reads as a broken string */
-.gd-bulb {
+/* The wall the photos hang on — same charcoal as the UX Projects fold above it.
+   Three layers, coarse to fine: a broad top-down light falloff (the fairy
+   lights are up there, so the wall is brighter at the top), soft plaster
+   mottling, then a fine grain of fractal noise so the flat colour has a
+   surface. The noise is an inline SVG filter, so this costs no extra request. */
+.gd-wall {
+  background-color: #282828;
+  background-image:
+    /* fine plaster grain */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E"),
+    /* uneven plaster patches */
+    radial-gradient(58% 44% at 18% 24%, rgba(255, 255, 255, 0.045), transparent 70%),
+    radial-gradient(46% 40% at 72% 68%, rgba(255, 255, 255, 0.035), transparent 72%),
+    radial-gradient(52% 46% at 90% 12%, rgba(0, 0, 0, 0.22), transparent 70%),
+    radial-gradient(60% 50% at 8% 88%, rgba(0, 0, 0, 0.26), transparent 72%),
+    /* light falls from the string at the top, so the skirting is darker */
+    linear-gradient(180deg, rgba(255, 235, 200, 0.05) 0%, transparent 34%, rgba(0, 0, 0, 0.3) 100%);
+  background-size: 220px 220px, auto, auto, auto, auto, auto;
+}
+
+/* Warm pool each bulb throws onto the wall. `screen` so it adds light to the
+   plaster rather than painting a flat disc over it. Breathes rather than
+   blinks — a hard on/off reads as a broken string. */
+.gd-glow {
+  background: radial-gradient(
+    circle closest-side,
+    rgba(255, 206, 122, 0.5),
+    rgba(255, 184, 84, 0.2) 42%,
+    rgba(255, 176, 74, 0) 72%
+  );
+  mix-blend-mode: screen;
   animation: gdTwinkle 3.4s ease-in-out infinite;
 }
 @keyframes gdTwinkle {
@@ -173,12 +202,12 @@ body {
     opacity: 1;
   }
   50% {
-    opacity: 0.55;
+    opacity: 0.62;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .gd-sway,
-  .gd-bulb {
+  .gd-glow {
     animation: none;
   }
 }
