@@ -51,14 +51,23 @@ export default function CaseStudyShell({
   }, []);
 
   // Prefer history.back() so the landing page restores its scroll position and
-  // the projects folder is still open — falls back to a normal push for anyone
-  // who deep-linked straight into the case study.
-  const goBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const cameFromSite =
-      typeof document !== "undefined" &&
-      document.referrer &&
-      new URL(document.referrer).origin === window.location.origin;
-    if (cameFromSite && window.history.length > 1) {
+  // This always ends up on the home page. When the visitor arrived *directly*
+  // from home we step back through history instead of pushing, purely so the
+  // landing page restores its scroll position with the projects folder still
+  // open. Any other route in (a deep link, or hopping here from another case
+  // study via the top-bar pills) falls through to a normal navigation to "/" —
+  // stepping back there would land on the previous case study, not home.
+  const goHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof document === "undefined" || !document.referrer) return;
+    let from: URL;
+    try {
+      from = new URL(document.referrer);
+    } catch {
+      return;
+    }
+    const cameStraightFromHome =
+      from.origin === window.location.origin && from.pathname === "/";
+    if (cameStraightFromHome && window.history.length > 1) {
       e.preventDefault();
       router.back();
     }
@@ -78,17 +87,16 @@ export default function CaseStudyShell({
         {/* same column as the artwork below, so the back arrow lines up with
             the case study's left edge instead of floating in the margin */}
         <div className="mx-auto flex h-[62px] max-w-[1440px] items-center gap-4 px-4 sm:px-8 lg:px-12">
+          {/* Home button — solid pill so it reads as a button, and the label
+              stays visible at every width (it used to collapse to a bare arrow
+              on phones, where a way out matters most). */}
           <Link
             href="/"
-            onClick={goBack}
-            className="font-figtree group flex shrink-0 items-center gap-2 text-sm font-semibold text-[#222]"
+            onClick={goHome}
+            className="font-figtree flex shrink-0 items-center gap-1.5 rounded-full bg-[#222] px-3.5 py-1.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#00af26]"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#222] text-white transition-colors group-hover:bg-[#00af26]">
-              ←
-            </span>
-            <span className="hidden transition-colors group-hover:text-[#00af26] sm:inline">
-              Anjali&apos;s portfolio
-            </span>
+            <span aria-hidden>←</span>
+            Home
           </Link>
 
           <div className="min-w-0 flex-1 text-center">
@@ -198,10 +206,10 @@ export default function CaseStudyShell({
           <div className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/10 pt-8">
             <Link
               href="/"
-              onClick={goBack}
+              onClick={goHome}
               className="font-figtree text-sm font-semibold text-white transition-colors hover:text-[#00af26]"
             >
-              ← Back to portfolio
+              ← Back to home
             </Link>
             <Link
               href="/projects"
