@@ -320,7 +320,7 @@ export default function Frame() {
     <div className="bg-[#f9f9f9] isolate relative size-full" data-node-id="1:2" data-name="Frame">
       {/* Peach wall the cork board hangs on. Picks up exactly where the dark UX
           Projects band ends (1846 + 994) and now stops just under the board
-          (which ends at 3798) rather than running on to the "OTHER THAN THAT"
+          (which ends at 3717) rather than running on to the "OTHER THAN THAT"
           title, so the fold reads as its own room without trailing off.
           Deliberately the first child: it has no z-index, so every later
           sibling — including the UX folder artwork that overhangs its top
@@ -328,7 +328,7 @@ export default function Frame() {
       <div
         aria-hidden
         className="absolute left-0 bg-[#fbe6d4]"
-        style={{ top: 2840, height: 3830 - 2840, width: 1728 }}
+        style={{ top: 2840, height: 3749 - 2840, width: 1728 }}
       />
       <div className="absolute h-[920px] left-0 shadow-[0px_12px_15.4px_6px_rgba(0,0,0,0.25)] top-0 w-[1728px]" data-node-id="1:9" data-name="image 2">
         <div aria-hidden className="absolute inset-0 pointer-events-none">
@@ -355,13 +355,13 @@ export default function Frame() {
           </div>
         </div>
       </div>
-      <div className="absolute bg-white h-[843px] left-px shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)] top-[5158px] w-[1728px]" data-node-id="456:520" />
-      <p className="[word-break:break-word] absolute font-figtree font-bold leading-[0.9] left-[106px] opacity-5 text-[64px] text-black text-left top-[3949px] whitespace-nowrap" data-node-id="444:200">
+      <div className="absolute bg-white h-[843px] left-px shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)] top-[5077px] w-[1728px]" data-node-id="456:520" />
+      <p className="[word-break:break-word] absolute font-figtree font-bold leading-[0.9] left-[106px] opacity-5 text-[64px] text-black text-left top-[3868px] whitespace-nowrap" data-node-id="444:200">
         OTHER THAN THAT
       </p>
       <div id="ux-projects" className="absolute bg-[#282828] h-[994px] left-0 scroll-mt-[20px] shadow-[0px_-4px_22.1px_0px_rgba(0,0,0,0.25)] top-[1846px] w-[1728px]" data-node-id="414:178" />
       {/* crumpled-paper texture removed from the UX fold */}
-      <div className="absolute h-[640px] left-0 top-[5383px] w-[1728px]" data-node-id="450:249">
+      <div className="absolute h-[640px] left-0 top-[5302px] w-[1728px]" data-node-id="450:249">
         <div className="absolute bg-[#2a2a2a] h-[640px] left-0 top-0 w-[1728px]" data-node-id="437:170" />
         <p className="[word-break:break-word] absolute font-figtree font-semibold left-[112px] text-[27px] text-white top-[132px] whitespace-nowrap" data-node-id="450:255b">
           Find me here
@@ -652,19 +652,19 @@ export default function Frame() {
         Because I called myself a visual designer
       </p>
       <GraphicDesignWork />
-      <p className="[word-break:break-word] absolute font-figtree font-bold leading-[normal] left-[106px] text-[#00af26] text-[64px] top-[3930px] whitespace-nowrap" data-node-id="433:403">
+      <p className="[word-break:break-word] absolute font-figtree font-bold leading-[normal] left-[106px] text-[#00af26] text-[64px] top-[3849px] whitespace-nowrap" data-node-id="433:403">
         OTHER THAN THAT
       </p>
-      <p className="[word-break:break-word] absolute font-figtree font-medium italic leading-[normal] left-[106px] text-[#848484] text-[34px] top-[4007px] w-[698px]" data-node-id="433:403-subtitle">
+      <p className="[word-break:break-word] absolute font-figtree font-medium italic leading-[normal] left-[106px] text-[#848484] text-[34px] top-[3926px] w-[698px]" data-node-id="433:403-subtitle">
         Jack of all, master of none (yet)
       </p>
-      <p className="[word-break:break-word] absolute font-figtree font-bold leading-[0.9] left-[106px] opacity-5 text-[64px] text-black text-left top-[4681px] whitespace-nowrap" data-node-id="456:519-shadow">
+      <p className="[word-break:break-word] absolute font-figtree font-bold leading-[0.9] left-[106px] opacity-5 text-[64px] text-black text-left top-[4600px] whitespace-nowrap" data-node-id="456:519-shadow">
         THERE&rsquo;S ALWAYS MORE TO LIFE
       </p>
-      <p className="[word-break:break-word] absolute font-figtree font-bold leading-[normal] left-[106px] text-[#00af26] text-[64px] top-[4662px] whitespace-nowrap" data-node-id="456:519">
+      <p className="[word-break:break-word] absolute font-figtree font-bold leading-[normal] left-[106px] text-[#00af26] text-[64px] top-[4581px] whitespace-nowrap" data-node-id="456:519">
         THERE&rsquo;S ALWAYS MORE TO LIFE
       </p>
-      <p className="[word-break:break-word] absolute font-figtree font-medium italic leading-[normal] left-[106px] text-[#848484] text-[34px] top-[4739px] w-[698px]" data-node-id="456:519-subtitle">
+      <p className="[word-break:break-word] absolute font-figtree font-medium italic leading-[normal] left-[106px] text-[#848484] text-[34px] top-[4658px] w-[698px]" data-node-id="456:519-subtitle">
         Cheers to life (Click!!)
       </p>
       <div className="absolute contents left-[180px] top-[1710px]" data-node-id="444:198">
@@ -746,7 +746,7 @@ export default function Frame() {
           <MacBookPro162 className="folder-graphic overflow-clip relative size-full scale-[0.85] origin-center" />
         </div>
       </div>
-      <Component2 className="absolute h-[486px] left-[-1px] overflow-clip top-[4873px] w-[1728px]" />
+      <Component2 className="absolute h-[486px] left-[-1px] overflow-clip top-[4792px] w-[1728px]" />
       <div className="absolute contents left-[calc(66.67%+96px)] top-[256px]" data-node-id="463:718">
         <div className="absolute h-[20.192px] left-[calc(66.67%+96px)] opacity-0 top-[256px] w-[57px]" data-node-id="463:719">
           <div className="absolute inset-[0_0.56%_0_0]">
