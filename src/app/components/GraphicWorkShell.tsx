@@ -20,12 +20,20 @@ export default function GraphicWorkShell({
   title,
   meta,
   background,
+  layout = "full",
   children,
 }: {
   title: string;
   meta: string;
-  /** CSS background behind the artwork column — usually a band gradient */
+  /** CSS background behind the artwork — usually a band gradient */
   background?: string;
+  /**
+   * "full" runs the artwork edge to edge, which is right for work that was
+   * designed at web proportions — it fills the window the way the real site
+   * would. "column" caps it at 1440 with margins, for work that is really a
+   * slide deck and would otherwise read as a document zoomed to fit.
+   */
+  layout?: "full" | "column";
   children: React.ReactNode;
 }) {
   const router = useRouter();
@@ -73,7 +81,11 @@ export default function GraphicWorkShell({
           which makes body a scroll container and stops sticky children from
           ever engaging in Chrome/Safari. The spacer below reserves its height. */}
       <header className="fixed inset-x-0 top-0 z-[200] border-b border-black/[0.07] bg-[#f9f9f9]/85 backdrop-blur-md">
-        <div className="mx-auto flex h-[62px] max-w-[1440px] items-center gap-4 px-4 sm:px-8 lg:px-12">
+        <div
+          className={`mx-auto flex h-[62px] items-center gap-4 px-4 sm:px-8 lg:px-12 ${
+            layout === "full" ? "max-w-[1920px]" : "max-w-[1440px]"
+          }`}
+        >
           <Link
             href="/"
             onClick={goHome}
@@ -111,13 +123,21 @@ export default function GraphicWorkShell({
           column adds no vertical padding), so a percentage-based band gradient
           lines up with the deck at any scale. */}
       <div className="case-study-fade" style={{ background: background ?? "#ffffff" }}>
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12">
-          {children}
-        </div>
+        {layout === "full" ? (
+          children
+        ) : (
+          <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12">
+            {children}
+          </div>
+        )}
       </div>
 
       <footer className="bg-[#141414] px-4 py-16 sm:px-8 md:py-24 lg:px-12">
-        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-8 gap-y-3">
+        <div
+          className={`mx-auto flex flex-wrap items-center gap-x-8 gap-y-3 ${
+            layout === "full" ? "max-w-[1920px]" : "max-w-[1440px]"
+          }`}
+        >
           <Link
             href="/"
             onClick={goHome}
