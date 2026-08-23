@@ -36,7 +36,15 @@ type Piece = {
 // cx / cy are measured from the board's own top-left, not the canvas, so the
 // whole arrangement travels with the board if it is resized or moved.
 const PIECES: Piece[] = [
-  { title: "Graphic design piece 1", cx: 286, cy: 215, tilt: -3.5, pin: "#d94b3f" },
+  {
+    title: "delish — bakery brand identity",
+    caption: "delish",
+    img: "/assets/graphic-design/delish.jpg",
+    cx: 286,
+    cy: 215,
+    tilt: -3.5,
+    pin: "#d94b3f",
+  },
   { title: "Graphic design piece 2", cx: 601, cy: 300, tilt: 2.4, pin: "#e8b23a" },
   { title: "Graphic design piece 3", cx: 921, cy: 255, tilt: -1.8, pin: "#3f9d9b" },
 ];
