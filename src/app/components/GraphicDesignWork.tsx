@@ -17,7 +17,7 @@ type Piece = {
   img?: string;
   /** optional link out (Instagram post, Behance, Drive folder…) */
   href?: string;
-  /** centre of the polaroid, from the left edge of the canvas */
+  /** centre of the polaroid, from the left edge of the board */
   cx: number;
   /** top of the polaroid, from the top of the board */
   cy: number;
@@ -29,20 +29,23 @@ type Piece = {
 
 // Spacing, height and tilt are deliberately uneven: line three photos up and
 // the board reads as a grid, which is the opposite of how anyone pins things.
+// cx / cy are measured from the board's own top-left, not the canvas, so the
+// whole arrangement travels with the board if it is resized or moved.
 const PIECES: Piece[] = [
-  { title: "Poster series", cx: 455, cy: 320, tilt: -3.5, pin: "#d94b3f" },
-  { title: "Social creatives", cx: 880, cy: 430, tilt: 2.4, pin: "#e8b23a" },
-  { title: "Brand identity", cx: 1320, cy: 370, tilt: -1.8, pin: "#3f9d9b" },
+  { title: "Poster series", cx: 306, cy: 215, tilt: -3.5, pin: "#d94b3f" },
+  { title: "Social creatives", cx: 621, cy: 300, tilt: 2.4, pin: "#e8b23a" },
+  { title: "Brand identity", cx: 941, cy: 255, tilt: -1.8, pin: "#3f9d9b" },
 ];
 
-// Image512.png — the board runs the full width of the canvas, ignoring the
-// page's content margins, so it reads as a board on the wall rather than a
-// picture in a column.
+// cork-board.png — hung on the wall rather than filling the fold, so it sits
+// centred on the canvas with the page showing around it.
 const CANVAS_W = 1728;
 const TOP = 3150;
-const ART_W = 1425;
-const ART_H = 952;
-const BOARD_H = Math.round((CANVAS_W * ART_H) / ART_W);
+const ART_W = 995;
+const ART_H = 668;
+const BOARD_W = 1200;
+const BOARD_H = Math.round((BOARD_W * ART_H) / ART_W);
+const BOARD_LEFT = Math.round((CANVAS_W - BOARD_W) / 2);
 
 /**
  * Inside edges of the wooden frame, as fractions of the artwork — measured off
@@ -50,20 +53,20 @@ const BOARD_H = Math.round((CANVAS_W * ART_H) / ART_W);
  * used by the dev-time assertion below, which is what stops a photo from being
  * pinned to the frame instead of the board.
  */
-const CORK = { left: 0.094, right: 0.9481, top: 0.0924, bottom: 0.9244 };
+const CORK = { left: 0.0965, right: 0.9487, top: 0.0943, bottom: 0.9236 };
 
 // polaroid proportions: even margin on three sides, deep margin under the photo
-const FRAME_W = 350;
-const MAT = 16;
+const FRAME_W = 250;
+const MAT = 12;
 const PHOTO = FRAME_W - MAT * 2; // square window
-const CAPTION_H = 74;
+const CAPTION_H = 54;
 const FRAME_H = MAT + PHOTO + CAPTION_H;
 
 if (process.env.NODE_ENV !== "production") {
   for (const p of PIECES) {
     const within =
-      p.cx - FRAME_W / 2 >= CORK.left * CANVAS_W &&
-      p.cx + FRAME_W / 2 <= CORK.right * CANVAS_W &&
+      p.cx - FRAME_W / 2 >= CORK.left * BOARD_W &&
+      p.cx + FRAME_W / 2 <= CORK.right * BOARD_W &&
       p.cy >= CORK.top * BOARD_H &&
       p.cy + FRAME_H <= CORK.bottom * BOARD_H;
     if (!within) console.warn(`"${p.title}" is pinned outside the cork area`);
@@ -74,15 +77,15 @@ export default function GraphicDesignWork() {
   return (
     <div
       id="graphic-design"
-      className="absolute left-0"
-      style={{ top: TOP, width: CANVAS_W, height: BOARD_H }}
+      className="absolute"
+      style={{ left: BOARD_LEFT, top: TOP, width: BOARD_W, height: BOARD_H }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         alt=""
-        src={A.imgImage512}
+        src={A.imgCorkBoard}
         className="absolute left-0 top-0 max-w-none pointer-events-none"
-        style={{ width: CANVAS_W, height: BOARD_H }}
+        style={{ width: BOARD_W, height: BOARD_H }}
       />
 
       {PIECES.map((p, i) => {
@@ -91,7 +94,7 @@ export default function GraphicDesignWork() {
           <Tag
             key={p.title}
             {...(p.href ? { href: p.href, target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="group absolute block bg-white shadow-[0_12px_26px_rgba(0,0,0,0.32)] transition-transform duration-200 ease-out hover:z-10 hover:scale-[1.04]"
+            className="group absolute block bg-white shadow-[0_9px_20px_rgba(0,0,0,0.32)] transition-transform duration-200 ease-out hover:z-10 hover:scale-[1.04]"
             style={{
               left: p.cx - FRAME_W / 2,
               top: p.cy,
@@ -109,7 +112,7 @@ export default function GraphicDesignWork() {
             {/* push pin, driven through the top of the frame */}
             <span
               aria-hidden
-              className="absolute left-1/2 top-0 size-[26px] -translate-x-1/2 -translate-y-[13px] rounded-full shadow-[0_4px_7px_rgba(0,0,0,0.4)]"
+              className="absolute left-1/2 top-0 size-[19px] -translate-x-1/2 -translate-y-[9px] rounded-full shadow-[0_3px_5px_rgba(0,0,0,0.4)]"
               style={{
                 background: `radial-gradient(circle at 34% 28%, rgba(255,255,255,0.85), rgba(255,255,255,0) 46%), ${p.pin}`,
               }}
@@ -132,8 +135,8 @@ export default function GraphicDesignWork() {
             )}
 
             <p
-              className="font-hand absolute inset-x-0 text-center text-[32px] leading-none text-[#333]"
-              style={{ bottom: CAPTION_H / 2 - 13 }}
+              className="font-hand absolute inset-x-0 text-center text-[23px] leading-none text-[#333]"
+              style={{ bottom: CAPTION_H / 2 - 10 }}
             >
               {p.title}
             </p>
