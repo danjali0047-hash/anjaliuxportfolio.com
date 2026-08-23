@@ -143,6 +143,46 @@ body {
   }
 }
 
+/* GRAPHIC DESIGN WORK — polaroids pegged to a fairy-light string. Each photo
+   pivots from its peg, so the sway is a pendulum, not a wobble. `--tilt` is the
+   photo's resting angle (set per photo) and the swing is a degree either side of
+   it, slow enough to read as air rather than animation. */
+.gd-sway {
+  transform: rotate(var(--tilt, 0deg));
+  animation-name: gdSway;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+@keyframes gdSway {
+  0%,
+  100% {
+    transform: rotate(calc(var(--tilt, 0deg) - 1.1deg));
+  }
+  50% {
+    transform: rotate(calc(var(--tilt, 0deg) + 1.1deg));
+  }
+}
+/* bulbs breathe rather than blink — a hard on/off reads as a broken string */
+.gd-bulb {
+  animation: gdTwinkle 3.4s ease-in-out infinite;
+}
+@keyframes gdTwinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gd-sway,
+  .gd-bulb {
+    animation: none;
+  }
+}
+
 /* Transparent click targets laid over buttons that are painted into the
    case-study artwork (e.g. Pune Metro's "View Prototype" pill). Invisible at
    rest so the slide looks untouched, with a soft ring on hover/focus so the
