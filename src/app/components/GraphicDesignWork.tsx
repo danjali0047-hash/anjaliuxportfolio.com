@@ -44,6 +44,7 @@ const PIECES: Piece[] = [
     title: "Delish - Bake house, brand identity",
     caption: "Delish - Bake house",
     img: "/assets/graphic-design/delish.jpg",
+    page: "/graphic-design/delish",
     cx: 220,
     cy: 183,
     tilt: -3.5,

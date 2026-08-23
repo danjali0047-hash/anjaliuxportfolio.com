@@ -319,15 +319,16 @@ export default function Frame() {
   return (
     <div className="bg-[#f9f9f9] isolate relative size-full" data-node-id="1:2" data-name="Frame">
       {/* Peach wall the cork board hangs on. Picks up exactly where the dark UX
-          Projects band ends (1846 + 994) and stops 100px short of the "OTHER
-          THAN THAT" title, so the graphic design fold reads as its own room.
+          Projects band ends (1846 + 994) and now stops just under the board
+          (which ends at 3798) rather than running on to the "OTHER THAN THAT"
+          title, so the fold reads as its own room without trailing off.
           Deliberately the first child: it has no z-index, so every later
           sibling — including the UX folder artwork that overhangs its top
           edge — paints on top of it in DOM order. */}
       <div
         aria-hidden
         className="absolute left-0 bg-[#fbe6d4]"
-        style={{ top: 2840, height: 4078 - 100 - 2840, width: 1728 }}
+        style={{ top: 2840, height: 3830 - 2840, width: 1728 }}
       />
       <div className="absolute h-[920px] left-0 shadow-[0px_12px_15.4px_6px_rgba(0,0,0,0.25)] top-0 w-[1728px]" data-node-id="1:9" data-name="image 2">
         <div aria-hidden className="absolute inset-0 pointer-events-none">

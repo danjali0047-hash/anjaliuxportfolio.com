@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import DeckSlices from "@/app/components/DeckSlices";
 import GraphicWorkShell from "@/app/components/GraphicWorkShell";
 import { bandsToGradient } from "@/app/projects/projects";
 
@@ -39,21 +40,12 @@ export default function CooPage() {
       meta="Shared living · Brand identity"
       background={bandsToGradient(BANDS)}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/assets/coo/full.jpg"
+      <DeckSlices
+        dir="coo"
+        name="coo"
+        count={3}
+        maxWidth={3840}
         alt="Coo — brand identity for a shared-living app: logo, mood board, type and colour system, and app mockups"
-        // Full width, but never past the render's own 2880px — beyond that it
-        // would upscale, and the bands carry the colour out to the edges
-        // instead. The deck was drawn at 1920, so on a normal display this
-        // shows it at or near the size it was designed.
-        style={{
-          width: "100%",
-          maxWidth: 2880,
-          height: "auto",
-          display: "block",
-          margin: "0 auto",
-        }}
       />
     </GraphicWorkShell>
   );
