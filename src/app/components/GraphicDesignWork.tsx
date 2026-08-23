@@ -36,28 +36,29 @@ type Piece = {
 // cx / cy are measured from the board's own top-left, not the canvas, so the
 // whole arrangement travels with the board if it is resized or moved.
 const PIECES: Piece[] = [
-  { title: "Graphic design piece 1", cx: 306, cy: 215, tilt: -3.5, pin: "#d94b3f" },
-  { title: "Graphic design piece 2", cx: 621, cy: 300, tilt: 2.4, pin: "#e8b23a" },
-  { title: "Graphic design piece 3", cx: 941, cy: 255, tilt: -1.8, pin: "#3f9d9b" },
+  { title: "Graphic design piece 1", cx: 286, cy: 215, tilt: -3.5, pin: "#d94b3f" },
+  { title: "Graphic design piece 2", cx: 601, cy: 300, tilt: 2.4, pin: "#e8b23a" },
+  { title: "Graphic design piece 3", cx: 921, cy: 255, tilt: -1.8, pin: "#3f9d9b" },
 ];
 
-// cork-board.png — hung on the wall rather than filling the fold, so it sits
+// cork-board.jpg — hung on the wall rather than filling the fold, so it sits
 // centred on the canvas with the page showing around it.
 const CANVAS_W = 1728;
 const TOP = 3110;
-const ART_W = 995;
-const ART_H = 668;
+const ART_W = 900;
+const ART_H = 607;
 const BOARD_W = 1200;
 const BOARD_H = Math.round((BOARD_W * ART_H) / ART_W);
 const BOARD_LEFT = Math.round((CANVAS_W - BOARD_W) / 2);
 
 /**
  * Inside edges of the wooden frame, as fractions of the artwork — measured off
- * the PNG by finding where the bright frame gives way to the darker cork. Only
+ * the artwork by finding where the bright frame gives way to the darker cork.
+ * Only
  * used by the dev-time assertion below, which is what stops a photo from being
  * pinned to the frame instead of the board.
  */
-const CORK = { left: 0.0965, right: 0.9487, top: 0.0943, bottom: 0.9236 };
+const CORK = { left: 0.0311, right: 0.9744, top: 0.0478, bottom: 0.9605 };
 
 // polaroid proportions: even margin on three sides, deep margin under the photo
 const FRAME_W = 250;
