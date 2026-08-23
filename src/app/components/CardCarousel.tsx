@@ -25,7 +25,7 @@ const CARDS: Card[] = [
 ];
 
 const LEFT = 106;
-const TOP = 3169;
+const TOP = 3901;
 const STRIP_W = 1516; // visible content width (106 .. 1622)
 const CARD_W = 700;
 const CARD_H = 400;
@@ -35,12 +35,12 @@ const OVERFLOW = Math.max(0, TOTAL - STRIP_W);
 // extra scroll the user "holds" on the last card before the page releases
 const HOLD = 350;
 const MAX = OVERFLOW + HOLD;
-// Pin anchor: the "OTHER THAN THAT" title sits at native 2958 (this far above
+// Pin anchor: the "OTHER THAN THAT" title sits at native 3690 (this far above
 // the cards). The scroll pins to ONE fixed page position — the title resting
 // PIN_MARGIN px below the top of the viewport (by which point the grey UX
 // background has scrolled away just above it) — so it stops in exactly the same
 // place every time, regardless of scroll speed or direction.
-const TITLE_ABOVE = TOP - 2958;
+const TITLE_ABOVE = TOP - 3690;
 const PIN_MARGIN = 40;
 
 export default function CardCarousel() {
