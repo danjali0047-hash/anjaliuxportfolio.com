@@ -12,7 +12,7 @@ import CardCarousel from "./components/CardCarousel";
 
 // Native dimensions of the Figma landing frame (node 1:2).
 const LANDING_WIDTH = 1728;
-const LANDING_HEIGHT = 6171;
+const LANDING_HEIGHT = 6023;
 
 export default function Home() {
   return (
