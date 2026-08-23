@@ -45,7 +45,15 @@ const PIECES: Piece[] = [
     tilt: -3.5,
     pin: "#d94b3f",
   },
-  { title: "Graphic design piece 2", cx: 601, cy: 300, tilt: 2.4, pin: "#e8b23a" },
+  {
+    title: "nCoo — brand identity",
+    caption: "nCoo",
+    img: "/assets/graphic-design/ncoo.jpg",
+    cx: 601,
+    cy: 300,
+    tilt: 2.4,
+    pin: "#e8b23a",
+  },
   { title: "Graphic design piece 3", cx: 921, cy: 255, tilt: -1.8, pin: "#3f9d9b" },
 ];
 
