@@ -37,8 +37,8 @@ type Piece = {
 // whole arrangement travels with the board if it is resized or moved.
 const PIECES: Piece[] = [
   {
-    title: "delish — bakery brand identity",
-    caption: "delish",
+    title: "Delish - Bake house, brand identity",
+    caption: "Delish - Bake house",
     img: "/assets/graphic-design/delish.jpg",
     cx: 286,
     cy: 215,
@@ -46,8 +46,8 @@ const PIECES: Piece[] = [
     pin: "#d94b3f",
   },
   {
-    title: "nCoo — brand identity",
-    caption: "nCoo",
+    title: "Coo - Shared living, brand identity",
+    caption: "Coo - Shared living",
     img: "/assets/graphic-design/ncoo.jpg",
     cx: 601,
     cy: 300,
@@ -70,9 +70,8 @@ const BOARD_LEFT = Math.round((CANVAS_W - BOARD_W) / 2);
 /**
  * Inside edges of the wooden frame, as fractions of the artwork — measured off
  * the artwork by finding where the bright frame gives way to the darker cork.
- * Only
- * used by the dev-time assertion below, which is what stops a photo from being
- * pinned to the frame instead of the board.
+ * Only used by the dev-time assertion below, which is what stops a photo from
+ * being pinned to the frame instead of the board.
  */
 const CORK = { left: 0.0311, right: 0.9744, top: 0.0478, bottom: 0.9605 };
 
@@ -157,7 +156,7 @@ export default function GraphicDesignWork() {
 
             {p.caption && (
               <p
-                className="font-hand absolute inset-x-0 text-center text-[23px] leading-none text-[#333]"
+                className="font-hand absolute inset-x-0 whitespace-nowrap px-2 text-center text-[23px] leading-none text-[#333]"
                 style={{ bottom: CAPTION_H / 2 - 10 }}
               >
                 {p.caption}
