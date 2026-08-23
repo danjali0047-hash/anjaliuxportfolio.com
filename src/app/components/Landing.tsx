@@ -326,7 +326,7 @@ export default function Frame() {
           edge — paints on top of it in DOM order. */}
       <div
         aria-hidden
-        className="absolute left-0 bg-[#fbe6d4]"
+        className="peach-wall absolute left-0"
         style={{ top: 2840, height: 4078 - 100 - 2840, width: 1728 }}
       />
       <div className="absolute h-[920px] left-0 shadow-[0px_12px_15.4px_6px_rgba(0,0,0,0.25)] top-0 w-[1728px]" data-node-id="1:9" data-name="image 2">
