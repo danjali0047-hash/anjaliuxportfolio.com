@@ -9,6 +9,8 @@
  * the polaroid's bottom margin. An entry with no `img` renders as an empty
  * frame, so a half-finished board still pins up correctly.
  */
+import Link from "next/link";
+
 import * as A from "../landing-assets";
 
 type Piece = {
@@ -19,7 +21,9 @@ type Piece = {
   caption?: string;
   /** e.g. "/assets/graphic-design/poster-series.jpg" — omit for an empty frame */
   img?: string;
-  /** optional link out (Instagram post, Behance, Drive folder…) */
+  /** a page inside this site — opens in place, like a case study */
+  page?: string;
+  /** an external link (Instagram post, Behance, Drive folder…), opens in a tab */
   href?: string;
   /** centre of the polaroid, from the left edge of the board */
   cx: number;
@@ -40,8 +44,8 @@ const PIECES: Piece[] = [
     title: "Delish - Bake house, brand identity",
     caption: "Delish - Bake house",
     img: "/assets/graphic-design/delish.jpg",
-    cx: 286,
-    cy: 215,
+    cx: 220,
+    cy: 183,
     tilt: -3.5,
     pin: "#d94b3f",
   },
@@ -49,12 +53,13 @@ const PIECES: Piece[] = [
     title: "Coo - Shared living, brand identity",
     caption: "Coo - Shared living",
     img: "/assets/graphic-design/ncoo.jpg",
-    cx: 601,
-    cy: 300,
+    page: "/graphic-design/coo",
+    cx: 512,
+    cy: 255,
     tilt: 2.4,
     pin: "#e8b23a",
   },
-  { title: "Graphic design piece 3", cx: 921, cy: 255, tilt: -1.8, pin: "#3f9d9b" },
+  { title: "Graphic design piece 3", cx: 805, cy: 217, tilt: -1.8, pin: "#3f9d9b" },
 ];
 
 // cork-board.jpg — hung on the wall rather than filling the fold, so it sits
@@ -63,7 +68,7 @@ const CANVAS_W = 1728;
 const TOP = 3110;
 const ART_W = 900;
 const ART_H = 607;
-const BOARD_W = 1200;
+const BOARD_W = 1020;
 const BOARD_H = Math.round((BOARD_W * ART_H) / ART_W);
 const BOARD_LEFT = Math.round((CANVAS_W - BOARD_W) / 2);
 
@@ -76,10 +81,10 @@ const BOARD_LEFT = Math.round((CANVAS_W - BOARD_W) / 2);
 const CORK = { left: 0.0311, right: 0.9744, top: 0.0478, bottom: 0.9605 };
 
 // polaroid proportions: even margin on three sides, deep margin under the photo
-const FRAME_W = 250;
-const MAT = 12;
+const FRAME_W = 212;
+const MAT = 10;
 const PHOTO = FRAME_W - MAT * 2; // square window
-const CAPTION_H = 54;
+const CAPTION_H = 46;
 const FRAME_H = MAT + PHOTO + CAPTION_H;
 
 if (process.env.NODE_ENV !== "production") {
@@ -109,12 +114,19 @@ export default function GraphicDesignWork() {
       />
 
       {PIECES.map((p, i) => {
-        const Tag = p.href ? "a" : "div";
+        // an internal page routes in place; an external link opens in a tab;
+        // a piece with neither is just a photo pinned to the board
+        const Tag = p.page ? Link : p.href ? "a" : "div";
+        const linkProps = p.page
+          ? { href: p.page }
+          : p.href
+            ? { href: p.href, target: "_blank", rel: "noopener noreferrer" }
+            : {};
         return (
           <Tag
             key={p.title}
-            {...(p.href ? { href: p.href, target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="group absolute block bg-white shadow-[0_9px_20px_rgba(0,0,0,0.32)] transition-transform duration-200 ease-out hover:z-10 hover:scale-[1.04]"
+            {...(linkProps as { href: string })}
+            className={`group absolute block bg-white shadow-[0_8px_17px_rgba(0,0,0,0.32)] transition-transform duration-200 ease-out hover:z-10 hover:scale-[1.04] ${p.page || p.href ? "cursor-pointer" : ""}`}
             style={{
               left: p.cx - FRAME_W / 2,
               top: p.cy,
@@ -132,7 +144,7 @@ export default function GraphicDesignWork() {
             {/* push pin, driven through the top of the frame */}
             <span
               aria-hidden
-              className="absolute left-1/2 top-0 size-[19px] -translate-x-1/2 -translate-y-[9px] rounded-full shadow-[0_3px_5px_rgba(0,0,0,0.4)]"
+              className="absolute left-1/2 top-0 size-[16px] -translate-x-1/2 -translate-y-[8px] rounded-full shadow-[0_3px_5px_rgba(0,0,0,0.4)]"
               style={{
                 background: `radial-gradient(circle at 34% 28%, rgba(255,255,255,0.85), rgba(255,255,255,0) 46%), ${p.pin}`,
               }}
@@ -156,8 +168,8 @@ export default function GraphicDesignWork() {
 
             {p.caption && (
               <p
-                className="font-hand absolute inset-x-0 whitespace-nowrap px-2 text-center text-[23px] leading-none text-[#333]"
-                style={{ bottom: CAPTION_H / 2 - 10 }}
+                className="font-hand absolute inset-x-0 whitespace-nowrap px-2 text-center text-[20px] leading-none text-[#333]"
+                style={{ bottom: CAPTION_H / 2 - 9 }}
               >
                 {p.caption}
               </p>
