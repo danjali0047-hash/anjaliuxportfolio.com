@@ -5,14 +5,18 @@
  * (1728-wide) px, same as Landing.tsx.
  *
  * To fill it in: drop the artwork into `public/assets/graphic-design/`, then set
- * `title` and `img` on the matching entry below. An entry with no `img` renders
- * as an empty frame, so a half-finished board still pins up correctly.
+ * `img` on the matching entry below, plus `caption` if you want handwriting in
+ * the polaroid's bottom margin. An entry with no `img` renders as an empty
+ * frame, so a half-finished board still pins up correctly.
  */
 import * as A from "../landing-assets";
 
 type Piece = {
-  /** caption handwritten across the polaroid's bottom margin */
+  /** internal name — the photo's alt text, never drawn on the board */
   title: string;
+  /** optional handwriting across the polaroid's bottom margin; the margin is
+      there either way, because that is what makes it a polaroid */
+  caption?: string;
   /** e.g. "/assets/graphic-design/poster-series.jpg" — omit for an empty frame */
   img?: string;
   /** optional link out (Instagram post, Behance, Drive folder…) */
@@ -32,15 +36,15 @@ type Piece = {
 // cx / cy are measured from the board's own top-left, not the canvas, so the
 // whole arrangement travels with the board if it is resized or moved.
 const PIECES: Piece[] = [
-  { title: "Poster series", cx: 306, cy: 215, tilt: -3.5, pin: "#d94b3f" },
-  { title: "Social creatives", cx: 621, cy: 300, tilt: 2.4, pin: "#e8b23a" },
-  { title: "Brand identity", cx: 941, cy: 255, tilt: -1.8, pin: "#3f9d9b" },
+  { title: "Graphic design piece 1", cx: 306, cy: 215, tilt: -3.5, pin: "#d94b3f" },
+  { title: "Graphic design piece 2", cx: 621, cy: 300, tilt: 2.4, pin: "#e8b23a" },
+  { title: "Graphic design piece 3", cx: 941, cy: 255, tilt: -1.8, pin: "#3f9d9b" },
 ];
 
 // cork-board.png — hung on the wall rather than filling the fold, so it sits
 // centred on the canvas with the page showing around it.
 const CANVAS_W = 1728;
-const TOP = 3150;
+const TOP = 3110;
 const ART_W = 995;
 const ART_H = 668;
 const BOARD_W = 1200;
@@ -134,12 +138,14 @@ export default function GraphicDesignWork() {
               </div>
             )}
 
-            <p
-              className="font-hand absolute inset-x-0 text-center text-[23px] leading-none text-[#333]"
-              style={{ bottom: CAPTION_H / 2 - 10 }}
-            >
-              {p.title}
-            </p>
+            {p.caption && (
+              <p
+                className="font-hand absolute inset-x-0 text-center text-[23px] leading-none text-[#333]"
+                style={{ bottom: CAPTION_H / 2 - 10 }}
+              >
+                {p.caption}
+              </p>
+            )}
           </Tag>
         );
       })}
