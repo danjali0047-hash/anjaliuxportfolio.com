@@ -1,13 +1,12 @@
 /**
- * "GRAPHIC DESIGN WORK" — three polaroids pegged to a fairy-light string,
- * hung on a grey wall.
+ * "GRAPHIC DESIGN WORK" — three polaroids pinned to the cork board.
  *
  * Rendered INSIDE the scaled canvas, so every coordinate here is native
  * (1728-wide) px, same as Landing.tsx.
  *
  * To fill it in: drop the artwork into `public/assets/graphic-design/`, then set
  * `title` and `img` on the matching entry below. An entry with no `img` renders
- * as an empty frame, so a half-finished wall still hangs correctly.
+ * as an empty frame, so a half-finished board still pins up correctly.
  */
 import * as A from "../landing-assets";
 
@@ -18,135 +17,127 @@ type Piece = {
   img?: string;
   /** optional link out (Instagram post, Behance, Drive folder…) */
   href?: string;
-  /** centre of the polaroid, measured from the string's left end */
+  /** centre of the polaroid, from the left edge of the canvas */
   cx: number;
-  /** resting tilt in degrees — nothing hangs perfectly straight */
+  /** top of the polaroid, from the top of the board */
+  cy: number;
+  /** resting tilt in degrees — nothing gets pinned up straight */
   tilt: number;
-  /** length of string between the light wire and the peg */
-  drop: number;
-  /** seconds — desynchronises the sway so the three don't swing in lockstep */
-  sway: number;
+  /** push-pin colour */
+  pin: string;
 };
 
-// cx / tilt / drop are deliberately uneven: matched spacing reads as a grid,
-// and the point of a washing line is that it doesn't. The drops also counteract
-// the wire's own rise and fall, so the photos end up at roughly — but not
-// exactly — the same height.
+// Spacing, height and tilt are deliberately uneven: line three photos up and
+// the board reads as a grid, which is the opposite of how anyone pins things.
 const PIECES: Piece[] = [
-  { title: "Poster series", cx: 210, tilt: -3.5, drop: 24, sway: 5.4 },
-  { title: "Social creatives", cx: 745, tilt: 2.4, drop: 58, sway: 6.7 },
-  { title: "Brand identity", cx: 1275, tilt: -1.8, drop: 44, sway: 6.0 },
+  { title: "Poster series", cx: 455, cy: 320, tilt: -3.5, pin: "#d94b3f" },
+  { title: "Social creatives", cx: 880, cy: 430, tilt: 2.4, pin: "#e8b23a" },
+  { title: "Brand identity", cx: 1320, cy: 370, tilt: -1.8, pin: "#3f9d9b" },
 ];
 
-// strip geometry — same left margin and content width as the cards carousel
-const LEFT = 106;
+// Image512.png — the board runs the full width of the canvas, ignoring the
+// page's content margins, so it reads as a board on the wall rather than a
+// picture in a column.
+const CANVAS_W = 1728;
 const TOP = 3150;
-const STRIP_W = 1516;
-const STRIP_H = 490;
-
-// Group238158.png, cropped to its content. Rendered at the strip's full width.
-const ART_W = 4559;
-const ART_H = 332;
-const LIGHTS_H = (STRIP_W * ART_H) / ART_W;
+const ART_W = 1425;
+const ART_H = 952;
+const BOARD_H = Math.round((CANVAS_W * ART_H) / ART_W);
 
 /**
- * The wire's height sampled off the artwork itself (41 even steps across its
- * width, as a fraction of the image height) — the string is hand-drawn and
- * wanders, so there's no curve to solve. Pegs interpolate into this table,
- * which is what keeps them biting the wire instead of floating near it.
+ * Inside edges of the wooden frame, as fractions of the artwork — measured off
+ * the PNG by finding where the bright frame gives way to the darker cork. Only
+ * used by the dev-time assertion below, which is what stops a photo from being
+ * pinned to the frame instead of the board.
  */
-const WIRE = [
-  0.3404, 0.3404, 0.4608, 0.5512, 0.6175, 0.6747, 0.6777, 0.6355, 0.5873,
-  0.5572, 0.4639, 0.3012, 0.2169, 0.1536, 0.0452, 0.0964, 0.2620, 0.3675,
-  0.4066, 0.4428, 0.4970, 0.4970, 0.4428, 0.3765, 0.2952, 0.1747, 0.0392,
-  0.1506, 0.2139, 0.2982, 0.4578, 0.5512, 0.5843, 0.6325, 0.6747, 0.6717,
-  0.6114, 0.5482, 0.4578, 0.3373, 0.3373,
-];
-const wireY = (x: number) => {
-  const t = Math.max(0, Math.min(1, x / STRIP_W)) * (WIRE.length - 1);
-  const i = Math.min(WIRE.length - 2, Math.floor(t));
-  return (WIRE[i] + (WIRE[i + 1] - WIRE[i]) * (t - i)) * LIGHTS_H;
-};
+const CORK = { left: 0.094, right: 0.9481, top: 0.0924, bottom: 0.9244 };
 
 // polaroid proportions: even margin on three sides, deep margin under the photo
-const FRAME_W = 310;
-const MAT = 14;
+const FRAME_W = 350;
+const MAT = 16;
 const PHOTO = FRAME_W - MAT * 2; // square window
-const CAPTION_H = 66;
+const CAPTION_H = 74;
+const FRAME_H = MAT + PHOTO + CAPTION_H;
+
+if (process.env.NODE_ENV !== "production") {
+  for (const p of PIECES) {
+    const within =
+      p.cx - FRAME_W / 2 >= CORK.left * CANVAS_W &&
+      p.cx + FRAME_W / 2 <= CORK.right * CANVAS_W &&
+      p.cy >= CORK.top * BOARD_H &&
+      p.cy + FRAME_H <= CORK.bottom * BOARD_H;
+    if (!within) console.warn(`"${p.title}" is pinned outside the cork area`);
+  }
+}
 
 export default function GraphicDesignWork() {
   return (
     <div
       id="graphic-design"
-      className="absolute"
-      style={{ left: LEFT, top: TOP, width: STRIP_W, height: STRIP_H }}
+      className="absolute left-0"
+      style={{ top: TOP, width: CANVAS_W, height: BOARD_H }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         alt=""
-        src={A.imgGroup238158}
+        src={A.imgImage512}
         className="absolute left-0 top-0 max-w-none pointer-events-none"
-        style={{ width: STRIP_W, height: LIGHTS_H }}
+        style={{ width: CANVAS_W, height: BOARD_H }}
       />
 
       {PIECES.map((p, i) => {
         const Tag = p.href ? "a" : "div";
         return (
-          // Anchored at the point on the wire where the peg bites, so the sway
-          // below pivots from the peg — the way a hanging photo actually moves.
-          <div
+          <Tag
             key={p.title}
-            className="absolute"
-            style={{ left: p.cx - FRAME_W / 2, top: wireY(p.cx), width: FRAME_W, zIndex: 2 + i }}
+            {...(p.href ? { href: p.href, target: "_blank", rel: "noopener noreferrer" } : {})}
+            className="group absolute block bg-white shadow-[0_12px_26px_rgba(0,0,0,0.32)] transition-transform duration-200 ease-out hover:z-10 hover:scale-[1.04]"
+            style={{
+              left: p.cx - FRAME_W / 2,
+              top: p.cy,
+              width: FRAME_W,
+              padding: MAT,
+              paddingBottom: CAPTION_H,
+              borderRadius: 3,
+              // pivot at the pin, so hovering lifts the photo around the point
+              // it's actually held by
+              transformOrigin: "50% 0",
+              transform: `rotate(${p.tilt}deg)`,
+              zIndex: 2 + i,
+            }}
           >
-            <div
-              className="gd-sway origin-top"
-              style={{ ["--tilt" as string]: `${p.tilt}deg`, animationDuration: `${p.sway}s` }}
-            >
-              {/* string from the wire down to the peg */}
+            {/* push pin, driven through the top of the frame */}
+            <span
+              aria-hidden
+              className="absolute left-1/2 top-0 size-[26px] -translate-x-1/2 -translate-y-[13px] rounded-full shadow-[0_4px_7px_rgba(0,0,0,0.4)]"
+              style={{
+                background: `radial-gradient(circle at 34% 28%, rgba(255,255,255,0.85), rgba(255,255,255,0) 46%), ${p.pin}`,
+              }}
+            />
+
+            {p.img ? (
+              <div className="overflow-hidden bg-[#eee]" style={{ height: PHOTO }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt={p.title} src={p.img} className="block size-full object-cover" />
+              </div>
+            ) : (
               <div
-                className="absolute left-1/2 top-0 w-[2px] -translate-x-1/2 bg-[#4a3b2c]"
-                style={{ height: p.drop + 10 }}
-              />
-              <Tag
-                {...(p.href ? { href: p.href, target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group relative block bg-white shadow-[0_14px_30px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-out hover:scale-[1.03]"
-                style={{ marginTop: p.drop, padding: MAT, paddingBottom: CAPTION_H, borderRadius: 3 }}
+                className="flex items-center justify-center border-2 border-dashed border-[#dcdcdc] bg-[#f4f4f4]"
+                style={{ height: PHOTO }}
               >
-                {/* wooden peg, straddling the top edge of the frame */}
-                <span
-                  aria-hidden
-                  className="absolute left-1/2 top-0 h-[34px] w-[15px] -translate-x-1/2 -translate-y-[18px] rounded-[3px] bg-[#d8a86a] shadow-[0_2px_4px_rgba(0,0,0,0.25)]"
-                >
-                  <span className="absolute inset-x-0 top-[13px] h-[3px] bg-[#8d8d8d]" />
-                  <span className="absolute inset-y-[3px] left-1/2 w-[1px] -translate-x-1/2 bg-[#b98c53]" />
+                <span className="font-figtree text-[15px] font-medium text-[#b4b4b4]">
+                  Artwork coming soon
                 </span>
+              </div>
+            )}
 
-                {p.img ? (
-                  <div className="overflow-hidden bg-[#eee]" style={{ height: PHOTO }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img alt={p.title} src={p.img} className="block size-full object-cover" />
-                  </div>
-                ) : (
-                  <div
-                    className="flex items-center justify-center border-2 border-dashed border-[#dcdcdc] bg-[#f4f4f4]"
-                    style={{ height: PHOTO }}
-                  >
-                    <span className="font-figtree text-[15px] font-medium text-[#b4b4b4]">
-                      Artwork coming soon
-                    </span>
-                  </div>
-                )}
-
-                <p
-                  className="font-hand absolute inset-x-0 text-center text-[30px] leading-none text-[#333]"
-                  style={{ bottom: CAPTION_H / 2 - 12 }}
-                >
-                  {p.title}
-                </p>
-              </Tag>
-            </div>
-          </div>
+            <p
+              className="font-hand absolute inset-x-0 text-center text-[32px] leading-none text-[#333]"
+              style={{ bottom: CAPTION_H / 2 - 13 }}
+            >
+              {p.title}
+            </p>
+          </Tag>
         );
       })}
     </div>
