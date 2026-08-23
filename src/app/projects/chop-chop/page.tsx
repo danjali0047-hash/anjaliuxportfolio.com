@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CaseStudyShell from "@/app/components/CaseStudyShell";
+import DeckSlices from "@/app/components/DeckSlices";
 
 export const metadata: Metadata = {
   title: "Chop Chop — Case Study | Anjali Dubey",
@@ -10,11 +11,12 @@ export const metadata: Metadata = {
 export default function ChopChopPage() {
   return (
     <CaseStudyShell slug="chop-chop">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/assets/chop-chop/full.png"
+      <DeckSlices
+        dir="chop-chop"
+        name="chop-chop"
+        count={4}
+        maxWidth={3456}
         alt="Chop Chop — UX case study"
-        style={{ width: "100%", height: "auto", display: "block" }}
       />
     </CaseStudyShell>
   );

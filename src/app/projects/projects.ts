@@ -80,7 +80,7 @@ export const PROJECTS: Project[] = [
     thumb: "/assets/pune-metro/thumb.png",
     pdf: "/pdfs/pune-metro.pdf",
     // This deck alternates blue and white. Boundary rows were read off
-    // full.png by taking the per-row median of a 14px strip at each edge (the
+    // the artwork by taking the per-row median of a 14px strip at each edge (the
     // median ignores content that bleeds to the edge); the left and right
     // edges agree on every boundary below.
     pageBands: {
