@@ -9,6 +9,7 @@ import FilesDrop from "./components/FilesDrop";
 import ProjectCards from "./components/ProjectCards";
 import PhotoSwap from "./components/PhotoSwap";
 import CardCarousel from "./components/CardCarousel";
+import SitePreloader from "./components/SitePreloader";
 
 // Native dimensions of the Figma landing frame (node 1:2).
 const LANDING_WIDTH = 1728;
@@ -17,6 +18,12 @@ const LANDING_HEIGHT = 5942;
 export default function Home() {
   return (
     <main className="bg-[#f9f9f9]">
+      {/* Without scripts nothing would ever dismiss the loading screen, so
+          remove it entirely in that case rather than trapping the visitor. */}
+      <noscript>
+        <style>{`#site-preloader{display:none!important}`}</style>
+      </noscript>
+      <SitePreloader />
       <ScaledCanvas width={LANDING_WIDTH} height={LANDING_HEIGHT}>
         <div style={{ width: LANDING_WIDTH, height: LANDING_HEIGHT, position: "relative" }}>
           <Landing />
