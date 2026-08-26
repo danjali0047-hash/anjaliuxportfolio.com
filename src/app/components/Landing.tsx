@@ -414,7 +414,7 @@ export default function Frame() {
                   the whole notebook is tilted by. */}
               <p
                 aria-hidden
-                className="font-hand pointer-events-none absolute left-[198px] top-[456px] -translate-x-1/2 -translate-y-1/2 rotate-[19deg] whitespace-nowrap text-[20px] leading-none text-[#6f5238]/80"
+                className="font-hand pointer-events-none absolute left-[230px] top-[351px] -translate-x-1/2 -translate-y-1/2 rotate-[19deg] whitespace-nowrap text-[24px] leading-none text-[#5f452c]/90"
               >
                 hover to know about me
               </p>
