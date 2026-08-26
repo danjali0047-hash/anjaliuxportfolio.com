@@ -406,18 +406,24 @@ export default function Frame() {
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <img alt="" className="absolute h-[106.66%] left-[-8.58%] max-w-none top-[-1.72%] w-[120.48%]" src={A.imgImage5} />
               </div>
-              {/* Written on the cover itself. Placed on the clear kraft below
-                  the pen rather than at the notebook's centroid, which the pen
-                  lies across, and turned 19deg — the cover's own angle, from
-                  the artwork's principal axis — so it reads along the notebook
-                  rather than across it. The parent already carries the -8.77deg
-                  the whole notebook is tilted by. */}
-              <p
+              {/* Written on the cover itself, at 19deg — the cover's own angle,
+                  taken from the artwork's principal axis — so it reads along the
+                  notebook rather than across it. The parent already carries the
+                  separate -8.77deg the whole notebook is tilted by.
+
+                  Two lines because the constraint is length, not area: the clear
+                  diagonal of kraft between the pen and the elastic band measures
+                  195px in this box, and the phrase set on one line already used
+                  190px of it at 24px, which was too faint to notice. Broken in
+                  two it fits 38px with the widest line at 182px, and there is
+                  439px of room across. */}
+              <div
                 aria-hidden
-                className="font-hand pointer-events-none absolute left-[230px] top-[351px] -translate-x-1/2 -translate-y-1/2 rotate-[19deg] whitespace-nowrap text-[24px] leading-none text-[#5f452c]/90"
+                className="font-hand pointer-events-none absolute left-[248px] top-[289px] -translate-x-1/2 -translate-y-1/2 rotate-[19deg] text-center text-[38px] font-bold leading-[0.95] text-[#4a3320]"
               >
-                hover to know about me
-              </p>
+                <span className="block whitespace-nowrap">hover to know</span>
+                <span className="block whitespace-nowrap">about me</span>
+              </div>
             </div>
           </div>
         </div>
