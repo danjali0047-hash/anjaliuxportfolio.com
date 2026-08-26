@@ -399,15 +399,6 @@ export default function Frame() {
           </div>
         </div>
       </div>
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex h-[419.057px] items-center justify-center left-[calc(91.67%-29.8px)] top-[545.53px] w-[528.397px]">
-        <div className="-scale-y-100 flex-none rotate-11">
-          <div className="h-[334.923px] opacity-0 relative w-[473.184px]" data-node-id="69:712" data-name="image 16">
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute h-[99.43%] left-0 max-w-none top-[0.13%] w-full" src={A.imgImage16} />
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="absolute flex h-[745.691px] items-center justify-center left-[-240px] top-[-230px] w-[922.998px] scale-[1.18]">
         <div className="flex-none rotate-[-19.44deg]">
           <div className="h-[508.699px] relative w-[799.265px]" data-node-id="3:9" data-name="image 6">
