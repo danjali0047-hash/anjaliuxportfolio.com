@@ -413,13 +413,13 @@ export default function Frame() {
 
                   Two lines because the constraint is length, not area: the clear
                   diagonal of kraft between the pen and the elastic band measures
-                  195px in this box, and the phrase set on one line already used
-                  190px of it at 24px, which was too faint to notice. Broken in
-                  two it fits 38px with the widest line at 182px, and there is
-                  439px of room across. */}
+                  195px in this box, and the phrase on one line used 190px of it
+                  at only 24px. Broken in two the longest line is 122px here, so
+                  the size is a free choice rather than one the geometry
+                  dictates. */}
               <div
                 aria-hidden
-                className="font-hand pointer-events-none absolute left-[248px] top-[289px] -translate-x-1/2 -translate-y-1/2 rotate-[19deg] text-center text-[38px] font-bold leading-[0.95] text-[#4a3320]"
+                className="font-hand pointer-events-none absolute left-[248px] top-[289px] -translate-x-1/2 -translate-y-1/2 rotate-[19deg] text-center text-[26px] leading-[1] text-[#4a3320]/85"
               >
                 <span className="block whitespace-nowrap">hover to know</span>
                 <span className="block whitespace-nowrap">about me</span>

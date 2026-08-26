@@ -32,6 +32,17 @@ export default function ScrollCar() {
      * wrong through the bends rather than at any one point.
      */
     const SPRITE_HEADING = 95.76;
+
+    /**
+     * How far the car leans into a bend. The road itself only swings +/-20.4deg
+     * either side of straight-down — sampled along the whole centreline — which
+     * is a truthful lean but a subtle one at this size. The deviation is scaled
+     * up so the extremes read as a full +/-30deg turn, then clamped there so a
+     * kink in the path can never spin the car further than the bends justify.
+     */
+    const ROAD_SWING = 20.4;
+    const MAX_LEAN = 30;
+    const LEAN_GAIN = MAX_LEAN / ROAD_SWING;
     const homeX = car.offsetLeft + car.offsetWidth / 2;
     const homeY = car.offsetTop + car.offsetHeight / 2;
 
@@ -52,8 +63,15 @@ export default function ScrollCar() {
       const heading =
         (Math.atan2(ahead.y - behind.y, ahead.x - behind.x) * 180) / Math.PI;
 
+      // lean measured against straight-down, not against the sprite's resting
+      // angle, so the turn stays symmetric left and right
+      const lean = Math.max(
+        -MAX_LEAN,
+        Math.min(MAX_LEAN, (heading - 90) * LEAN_GAIN),
+      );
+
       car.style.translate = `${pt.x - homeX}px ${pt.y - homeY}px`;
-      car.style.rotate = `${heading - SPRITE_HEADING}deg`;
+      car.style.rotate = `${lean - (SPRITE_HEADING - 90)}deg`;
     };
 
     let raf = 0;
