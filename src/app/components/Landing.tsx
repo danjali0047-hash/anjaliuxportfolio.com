@@ -388,6 +388,23 @@ export default function Frame() {
       <div data-song className="absolute h-[383px] left-[140px] opacity-100 top-[585px] w-[434px]" data-node-id="1:30" data-name="image 4">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={A.imgImage4} />
       </div>
+      {/* These two hints label interactions that are otherwise invisible — the
+          AirPods play a song on hover, the notebook opens. Both sit in empty
+          space within their artwork, over the dark hero, and are
+          pointer-events-none so they can never eat the hover they describe.
+          Faint on purpose: a nudge for anyone who pauses, not a caption. */}
+      <p
+        aria-hidden
+        className="font-hand pointer-events-none absolute left-[150px] top-[856px] whitespace-nowrap text-[24px] leading-none text-white/55 [text-shadow:0_1px_5px_rgba(0,0,0,0.5)]"
+      >
+        hover to play music
+      </p>
+      <p
+        aria-hidden
+        className="font-hand pointer-events-none absolute left-[1395px] top-[822px] whitespace-nowrap text-[24px] leading-none text-white/55 [text-shadow:0_1px_5px_rgba(0,0,0,0.5)]"
+      >
+        hover to know about me
+      </p>
       <div id="closed-notebook" style={{ transition: "opacity 0.3s ease" }} className="absolute h-[600.308px] left-[calc(66.67%+187px)] top-[267px] w-[549.072px]" data-node-id="69:705">
         <div className="absolute flex h-[600.308px] items-center justify-center left-0 top-0 w-[549.072px]">
           <div className="flex-none rotate-[-8.77deg]">

@@ -54,7 +54,7 @@ export default function LandingDesktop() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             id="open-notebook"
-            src="/assets/landing/open-notebook.png"
+            src="/assets/landing/open-notebook.webp"
             alt="Open notebook — About me and my to-do's"
             style={{
               position: "absolute",
