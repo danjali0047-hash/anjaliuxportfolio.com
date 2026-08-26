@@ -58,9 +58,6 @@ export default function SitePreloader() {
   const [pct, setPct] = useState(0);
 
   useEffect(() => {
-    const imgs = Array.from(document.images);
-    const total = imgs.length || 1;
-    let loaded = 0;
     let finished = false;
 
     const finish = () => {
@@ -85,28 +82,35 @@ export default function SitePreloader() {
       });
     };
 
-    const tick = () => {
-      loaded += 1;
-      setPct(Math.round((loaded / total) * 100));
-      if (loaded >= total) finish();
-    };
-
     // lock scrolling while the screen is up, so the page can't be scrolled
     // behind it and land somewhere unexpected on reveal
     document.documentElement.style.overflow = "hidden";
 
-    for (const img of imgs) {
-      if (img.complete) tick();
-      else {
-        img.addEventListener("load", tick, { once: true });
-        img.addEventListener("error", tick, { once: true }); // a broken image must not hang the page
-      }
-    }
-    if (loaded >= total) finish();
+    // Polled rather than counted from listeners attached once: LandingSwitch
+    // replaces the whole layout on mount when the viewport is a desktop, so the
+    // set of images on the page changes after this effect runs. Re-reading it
+    // each tick is what makes this correct for both layouts.
+    let settled = 0;
+    const poll = window.setInterval(() => {
+      const imgs = Array.from(document.images);
+      if (!imgs.length) return;
+      const ready = imgs.filter((i) => i.complete).length;
+      setPct(Math.round((ready / imgs.length) * 100));
+      // require the count to hold steady for two ticks, so we don't reveal in
+      // the gap between one layout unmounting and the next one's images landing
+      if (ready === imgs.length) {
+        settled += 1;
+        if (settled >= 2) {
+          window.clearInterval(poll);
+          finish();
+        }
+      } else settled = 0;
+    }, 150);
 
-    const cap = setTimeout(finish, CAP_MS);
+    const cap = window.setTimeout(finish, CAP_MS);
     return () => {
-      clearTimeout(cap);
+      window.clearInterval(poll);
+      window.clearTimeout(cap);
       document.documentElement.style.removeProperty("overflow");
     };
   }, []);

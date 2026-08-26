@@ -13,7 +13,7 @@ import Link from "next/link";
 
 import * as A from "../landing-assets";
 
-type Piece = {
+export type Piece = {
   /** internal name — the photo's alt text, never drawn on the board */
   title: string;
   /** optional handwriting across the polaroid's bottom margin; the margin is
@@ -39,7 +39,7 @@ type Piece = {
 // the board reads as a grid, which is the opposite of how anyone pins things.
 // cx / cy are measured from the board's own top-left, not the canvas, so the
 // whole arrangement travels with the board if it is resized or moved.
-const PIECES: Piece[] = [
+export const PIECES: Piece[] = [
   {
     title: "Delish - Bake house, brand identity",
     caption: "Delish - Bake house",

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import * as A from "../landing-assets";
 import { lockScroll, unlockScroll } from "./scrollLock";
 
 /**
@@ -14,8 +13,8 @@ import { lockScroll, unlockScroll } from "./scrollLock";
  *
  * Rendered inside the scaled canvas, so sizes are native (1728-wide) px.
  */
-type Card = { label: string; img?: string; videos?: string[]; pos: string; bg: string; weight?: number; lx?: number; ly?: number; fs?: number; href?: string };
-const CARDS: Card[] = [
+export type Card = { label: string; img?: string; videos?: string[]; pos: string; bg: string; weight?: number; lx?: number; ly?: number; fs?: number; href?: string };
+export const CARDS: Card[] = [
   { label: "I create", videos: ["/assets/landing/create-1.mp4", "/assets/landing/create-3.mp4", "/assets/landing/create-1.mp4"], pos: "50% 50%", bg: "#222", weight: 800, lx: 44, ly: 40, fs: 42, href: "https://www.instagram.com/anjaliiiii.dubey/" },
   { label: "I run", videos: ["/assets/landing/run-1.mp4", "/assets/landing/run-2.mp4", "/assets/landing/run-3.mp4"], pos: "50% 50%", bg: "#222" },
   { label: "I Film", videos: ["/assets/landing/film.mp4"], pos: "50% 50%", bg: "#222", href: "https://www.youtube.com/watch?v=9rQjUOFmK-I" },
