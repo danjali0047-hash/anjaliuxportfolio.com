@@ -3,10 +3,14 @@
 import { useEffect } from "react";
 
 /**
- * Drives the car (#scroll-car) along the road centreline (#road-path) as the
- * user scrolls past the "ROAD SO FAR" section. The car follows the curve from
- * top to bottom and rotates to the path's tangent so it always faces the way
- * the road bends.
+ * Drives the car (#scroll-car) along the road's white dashed centreline
+ * (#road-path) as the user scrolls past the "ROAD SO FAR" section.
+ *
+ * The path is the centreline lifted straight out of the road artwork — the
+ * "Vector 1295" stroke in Group238204.svg — mapped into canvas coordinates, so
+ * the car sits on the dashes rather than near them. It also turns to the path's
+ * tangent, so it leans into each bend instead of holding one fixed angle
+ * through a road that swings 40 degrees.
  */
 export default function ScrollCar() {
   useEffect(() => {
@@ -18,17 +22,38 @@ export default function ScrollCar() {
     if (!road || !car || !path) return;
 
     const total = path.getTotalLength();
+
+    /**
+     * Where the car points when nothing has rotated it. The sprite is drawn
+     * facing left — its wing mirrors sit forward of centre — so 180deg, and the
+     * markup turns it a further -84.24deg, leaving it at 95.76deg: very nearly
+     * straight down the page. That was a fair average for a road whose heading
+     * actually swings between 70deg and 110deg, which is why the car looked
+     * wrong through the bends rather than at any one point.
+     */
+    const SPRITE_HEADING = 95.76;
     const homeX = car.offsetLeft + car.offsetWidth / 2;
     const homeY = car.offsetTop + car.offsetHeight / 2;
 
     // a little smoothing so scrolling feels fluid, not jumpy
-    car.style.transition = "translate 0.18s ease-out";
+    car.style.transition = "translate 0.18s ease-out, rotate 0.18s ease-out";
 
     const apply = (p: number) => {
       const len = total * (1 - p); // path runs bottom->top, so invert
       const pt = path.getPointAtLength(len);
-      // move along the road only — keep the car's original orientation (no rotation)
+
+      // Steer along the dashed centreline. The car travels toward DECREASING
+      // length, because len is derived from (1 - p), so the heading is taken
+      // from the point just ahead of it minus the one just behind — sampling
+      // both sides keeps it steady through the curves instead of jittering.
+      const eps = Math.min(8, total / 2);
+      const ahead = path.getPointAtLength(Math.max(0, len - eps));
+      const behind = path.getPointAtLength(Math.min(total, len + eps));
+      const heading =
+        (Math.atan2(ahead.y - behind.y, ahead.x - behind.x) * 180) / Math.PI;
+
       car.style.translate = `${pt.x - homeX}px ${pt.y - homeY}px`;
+      car.style.rotate = `${heading - SPRITE_HEADING}deg`;
     };
 
     let raf = 0;
