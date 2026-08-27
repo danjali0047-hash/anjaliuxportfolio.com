@@ -581,7 +581,7 @@ export default function Frame() {
             belongs to the object rather than being interface stuck on top of
             it, and naming the plant is what invites you to say hello. Sits in
             the foliage above the diary, and steps aside as the bubble opens. */}
-        <div className="roots-tag pointer-events-none absolute left-[136px] top-[250px] transition-opacity duration-200 group-hover:opacity-0">
+        <div className="roots-tag pointer-events-none absolute left-[136px] top-[210px] transition-opacity duration-200 group-hover:opacity-0">
           <div className="relative rounded-[6px] bg-[#fdf8ef] px-[11px] py-[6px] shadow-[0_5px_14px_rgba(0,0,0,0.35)]">
             <p className="font-hand whitespace-nowrap text-[21px] leading-none text-[#3f4a37]/60">
               say hi to Roots
