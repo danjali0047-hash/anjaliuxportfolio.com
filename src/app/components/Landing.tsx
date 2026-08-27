@@ -493,77 +493,18 @@ export default function Frame() {
       <p className="[word-break:break-word] absolute font-figtree font-bold leading-[normal] left-[106px] text-[#00af26] text-[64px] top-[1013px] whitespace-nowrap" data-node-id="333:1027">
         ROAD SO FAR
       </p>
-      {/* The two binned paper balls, wrapped so they share one hover: the sheet
-          they unfold into is the same sheet whichever you reach for. The wrapper
-          takes their combined canvas box (0,570)-(183,752) and the balls are
-          re-expressed against it, so nothing moves. */}
-      <div className="group z-[35] absolute left-0 top-[570px] h-[182px] w-[183px]">
-        <div className="absolute h-[98px] left-0 opacity-87 top-0 w-[102px]" data-node-id="52:145" data-name="image 13">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <img alt="" className="absolute h-[239.73%] left-[-31.67%] max-w-none top-0 w-[307.9%]" src={A.imgImage13} />
-          </div>
-        </div>
-        <div className="absolute h-[112px] left-[48px] opacity-87 top-[70px] w-[135px]" data-node-id="52:149" data-name="image 14">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <img alt="" className="absolute h-[210.84%] left-[-13.72%] max-w-none top-[-84.34%] w-[232.67%]" src={A.imgImage13} />
-          </div>
-        </div>
-
-        {/* Unfolded, it turns out to be a discarded paper prototype. It grows
-            from the balls' own corner — origin bottom-left — so the sheet reads
-            as the crumple opening rather than a panel appearing over it. The
-            creases are drawn back in, because paper that was screwed up does not
-            come out flat. */}
-        <div className="pointer-events-none absolute left-[26px] top-[-186px] h-[320px] w-[278px] origin-bottom-left rotate-[-14deg] scale-[0.55] opacity-0 transition-[opacity,transform] duration-[380ms] ease-[cubic-bezier(0.2,0.9,0.25,1)] group-hover:rotate-[-4deg] group-hover:scale-100 group-hover:opacity-100">
-          <div className="relative size-full rounded-[3px] bg-[#f4efe2] shadow-[0_16px_34px_rgba(0,0,0,0.45)]">
-            {/* creases left over from being screwed up */}
-            <span className="absolute left-0 top-[38%] h-px w-full bg-black/[0.07]" />
-            <span className="absolute left-[41%] top-0 h-full w-px bg-black/[0.06]" />
-            <svg viewBox="0 0 278 320" className="absolute inset-0 size-full" aria-hidden>
-              <g
-                fill="none"
-                stroke="#3a4550"
-                strokeWidth="2.1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {/* the phone being sketched */}
-                <path d="M84 30 L196 27 Q203 27 203 35 L206 282 Q206 290 199 290 L88 292 Q81 292 81 285 Z" />
-                {/* status bar + title */}
-                <path d="M96 48 L128 47" strokeWidth="3" />
-                <path d="M96 70 L170 68" strokeWidth="4.5" />
-                {/* image placeholder, crossed through the way you do on paper */}
-                <path d="M95 88 L191 86 L192 148 L96 150 Z" />
-                <path d="M95 88 L192 148 M192 86 L96 150" strokeWidth="1.4" />
-                {/* body copy */}
-                <path d="M96 168 L188 166 M96 182 L188 180 M96 196 L154 195" strokeWidth="1.6" />
-                {/* two buttons */}
-                <path d="M96 214 L140 213 Q145 213 145 219 L145 232 Q145 238 140 238 L97 239 Q92 239 92 233 L92 220 Q92 214 96 214 Z" />
-                <path d="M155 213 L192 212 Q197 212 197 218 L197 231 Q197 237 192 237 L156 238 Q151 238 151 232 L151 219 Q151 213 155 213 Z" />
-                {/* bottom nav */}
-                <path d="M88 258 L200 256" strokeWidth="1.4" />
-                <circle cx="110" cy="273" r="7" />
-                <circle cx="144" cy="272" r="7" />
-                <circle cx="178" cy="271" r="7" />
-                {/* an arrow and a margin note, as on any real prototype */}
-                <path d="M218 120 Q240 132 232 168" strokeWidth="1.6" />
-                <path d="M232 168 L226 157 M232 168 L240 160" strokeWidth="1.6" />
-                <path d="M30 214 L64 212 M30 228 L58 226" strokeWidth="1.4" />
-              </g>
-              <text
-                x="212"
-                y="106"
-                fill="#3a4550"
-                fontSize="17"
-                fontFamily="var(--ff-hand), cursive"
-                transform="rotate(-7 212 106)"
-              >
-                v1
-              </text>
-            </svg>
-          </div>
+      <div className="absolute h-[98px] left-0 opacity-87 top-[570px] w-[102px]" data-node-id="52:145" data-name="image 13">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <img alt="" className="absolute h-[239.73%] left-[-31.67%] max-w-none top-0 w-[307.9%]" src={A.imgImage13} />
         </div>
       </div>
+      {/* dark-fold crumpled paper balls removed */}
+      <div className="absolute h-[112px] left-[48px] opacity-87 top-[640px] w-[135px]" data-node-id="52:149" data-name="image 14">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <img alt="" className="absolute h-[210.84%] left-[-13.72%] max-w-none top-[-84.34%] w-[232.67%]" src={A.imgImage13} />
+        </div>
+      </div>
+      {/* dark-fold crumpled paper balls removed */}
       <div className="absolute contents left-[calc(50%+84px)] top-[-56px]" data-node-id="47:27">
         <div className="absolute contents h-[576.204px] left-[calc(50%+84px)] top-[-56px] w-[558.957px]" data-node-id="47:28">
           <div data-photo="back" className="absolute flex h-[439.059px] items-center justify-center left-[calc(50%+167.51px)] top-[12.57px] w-[391.937px]">
@@ -642,7 +583,7 @@ export default function Frame() {
             the foliage above the diary, and steps aside as the bubble opens. */}
         <div className="roots-tag pointer-events-none absolute left-[34px] top-[246px] transition-opacity duration-200 group-hover:opacity-0">
           <div className="relative rounded-[6px] bg-[#fdf8ef] px-[11px] py-[6px] shadow-[0_5px_14px_rgba(0,0,0,0.35)]">
-            <p className="font-hand whitespace-nowrap text-[21px] leading-none text-[#3f4a37]">
+            <p className="font-hand whitespace-nowrap text-[21px] leading-none text-[#3f4a37]/60">
               say hi to Roots
             </p>
             {/* the stake, pushed down into the pot */}
