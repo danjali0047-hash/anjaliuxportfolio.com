@@ -399,7 +399,7 @@ export default function Frame() {
           space within their artwork, over the dark hero, and are
           pointer-events-none so they can never eat the hover they describe.
           Faint on purpose: a nudge for anyone who pauses, not a caption. */}
-      <div id="closed-notebook" style={{ transition: "opacity 0.3s ease" }} className="absolute h-[600.308px] left-[calc(66.67%+187px)] top-[267px] w-[549.072px]" data-node-id="69:705">
+      <div id="closed-notebook" style={{ transition: "opacity 0.3s ease" }} className="absolute h-[600.308px] left-[calc(66.67%+117px)] top-[267px] w-[549.072px] scale-[1.18]" data-node-id="69:705">
         <div className="absolute flex h-[600.308px] items-center justify-center left-0 top-0 w-[549.072px]">
           <div className="flex-none rotate-[-8.77deg]">
             <div className="h-[534.41px] opacity-92 relative w-[473.108px]" data-node-id="3:3" data-name="image 5">

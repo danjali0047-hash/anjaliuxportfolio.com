@@ -29,10 +29,12 @@ export default function LandingDesktop() {
             aria-hidden
             style={{
               position: "absolute",
-              left: 1339,
-              top: 267,
-              width: 549,
-              height: 600,
+              // matches the scaled diary's box: it grows about its own centre,
+              // so these are the 1.18x bounds, not the unscaled ones
+              left: 1220,
+              top: 213,
+              width: 648,
+              height: 708,
               zIndex: 46,
               cursor: "pointer",
             }}
@@ -63,13 +65,12 @@ export default function LandingDesktop() {
               width: 1000,
               height: 708,
               objectFit: "contain",
-              filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.55))",
               opacity: 0,
               scale: "0.82",
               transformOrigin: "center",
               pointerEvents: "none",
               transition: "opacity 0.45s ease, scale 0.45s cubic-bezier(0.2,0.8,0.2,1)",
-              willChange: "scale, opacity", // promote to its own layer so the drop-shadow scales instead of repainting each frame
+              willChange: "scale, opacity", // its own layer, so the zoom is a composite rather than a repaint each frame
               zIndex: 100,
             }}
           />
