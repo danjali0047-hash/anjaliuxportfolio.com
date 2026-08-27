@@ -29,12 +29,10 @@ export default function LandingDesktop() {
             aria-hidden
             style={{
               position: "absolute",
-              // matches the scaled diary's box: it grows about its own centre,
-              // so these are the 1.18x bounds, not the unscaled ones
-              left: 1220,
-              top: 213,
-              width: 648,
-              height: 708,
+              left: 1339,
+              top: 267,
+              width: 549,
+              height: 600,
               zIndex: 46,
               cursor: "pointer",
             }}

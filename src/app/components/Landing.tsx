@@ -399,7 +399,7 @@ export default function Frame() {
           space within their artwork, over the dark hero, and are
           pointer-events-none so they can never eat the hover they describe.
           Faint on purpose: a nudge for anyone who pauses, not a caption. */}
-      <div id="closed-notebook" style={{ transition: "opacity 0.3s ease" }} className="absolute h-[600.308px] left-[calc(66.67%+117px)] top-[267px] w-[549.072px] scale-[1.18]" data-node-id="69:705">
+      <div id="closed-notebook" style={{ transition: "opacity 0.3s ease" }} className="absolute h-[600.308px] left-[calc(66.67%+187px)] top-[267px] w-[549.072px]" data-node-id="69:705">
         <div className="absolute flex h-[600.308px] items-center justify-center left-0 top-0 w-[549.072px]">
           <div className="flex-none rotate-[-8.77deg]">
             <div className="h-[534.41px] opacity-92 relative w-[473.108px]" data-node-id="3:3" data-name="image 5">
@@ -543,10 +543,27 @@ export default function Frame() {
           </div>
         </div>
       </div>
-      <div className="z-[8] absolute h-[458px] left-[calc(66.67%+202px)] top-[-79px] w-[517px]" data-node-id="463:722">
+      {/* Roots. Hovering the plant pops a speech bubble — the Figma file planned
+          one here but left it at opacity 0 and 3px type, so this replaces it with
+          something legible. It sits to the plant's left with its tail pointing
+          back at it, in the band above the diary and right of the sticky notes,
+          which is the one quiet gap in this corner of the hero. */}
+      <div className="group z-[8] absolute h-[458px] left-[calc(66.67%+202px)] top-[-79px] w-[517px]" data-node-id="463:722">
         <div className="absolute h-[458px] left-0 top-0 w-[517px]" data-node-id="3:12" data-name="image 7">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <img alt="" className="absolute h-[300%] left-[-95.26%] max-w-none top-[-154.72%] w-[265.74%]" src={A.imgImage7} />
+          </div>
+        </div>
+        <div
+          role="status"
+          className="pointer-events-none absolute left-[-269px] top-[199px] w-[290px] origin-bottom-right translate-y-[10px] scale-[0.94] opacity-0 transition-[opacity,transform] duration-300 ease-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100"
+        >
+          <div className="relative rounded-[20px] bg-[#fdf8ef] px-5 py-4 shadow-[0_12px_30px_rgba(0,0,0,0.3)]">
+            <p className="font-hand text-[26px] leading-[1.2] text-[#2f2a22]">
+              Hi! I&rsquo;m Roots. I sit in this corner and listen to all her rants.
+            </p>
+            {/* tail, pointing back at the plant */}
+            <span className="absolute right-[-8px] top-[34px] size-[20px] rotate-45 rounded-[3px] bg-[#fdf8ef]" />
           </div>
         </div>
       </div>
@@ -767,16 +784,6 @@ export default function Frame() {
         </div>
       </div>
       <Component2 className="absolute h-[486px] left-[-1px] overflow-clip top-[4792px] w-[1728px]" />
-      <div className="absolute contents left-[calc(66.67%+96px)] top-[256px]" data-node-id="463:718">
-        <div className="absolute h-[20.192px] left-[calc(66.67%+96px)] opacity-0 top-[256px] w-[57px]" data-node-id="463:719">
-          <div className="absolute inset-[0_0.56%_0_0]">
-            <img alt="" className="block max-w-none size-full" src={A.imgRectangle3386} />
-          </div>
-        </div>
-        <p className="[word-break:break-word] absolute font-fuzzy leading-[86.52999877929688%] left-[calc(66.67%+101.41px)] not-italic opacity-0 text-[3.13px] text-white top-[260.44px] w-[42.992px]" data-node-id="463:720">
-          &ldquo;Hi, I am Roots, I stay on her table and listen to all her rants.&rdquo;
-        </p>
-      </div>
     </div>
   );
 }
