@@ -307,10 +307,10 @@ type Frame1Props = {
   label?: string;
 };
 
-function Frame1({ className, property1 = "Default", label = " View Projects" }: Frame1Props) {
+function Frame1({ className, property1 = "Default", label = "View Projects" }: Frame1Props) {
   return (
     <div className={className || "bg-[rgba(255,255,255,0.31)] content-stretch flex items-center justify-center px-[48px] py-[24px] relative rounded-[91px]"} data-node-id="65:580">
-      <p className="[word-break:break-word] font-figtree font-bold leading-[normal] relative shrink-0 text-[21.6px] text-center text-white whitespace-nowrap" data-node-id="61:579">{label}</p>
+      <p className="[word-break:break-word] font-figtree font-bold leading-[normal] relative shrink-0 text-[18px] text-center text-white whitespace-nowrap" data-node-id="61:579">{label}</p>
     </div>
   );
 }
@@ -591,9 +591,9 @@ export default function Frame() {
           </div>
         </div>
       </div>
-      <div className="-translate-x-1/2 absolute top-[700px] left-[calc(50%+0.5px)] flex items-center gap-[24px]">
+      <div className="-translate-x-1/2 absolute top-[700px] left-1/2 flex items-center gap-[20px]">
         <a href="#ux-projects" aria-label="View projects" className="block cursor-pointer">
-          <Frame1 className="bg-[rgba(255,255,255,0.31)] content-stretch cursor-pointer flex items-center justify-center px-[36px] py-[18px] rounded-[68px] transition-[transform,background-color,box-shadow] duration-200 ease-out hover:bg-[rgba(255,255,255,0.55)] hover:scale-[1.06] hover:shadow-[0px_10px_28px_rgba(0,0,0,0.28)] hover:ring-1 hover:ring-white/60 active:scale-[0.98]" />
+          <Frame1 className="bg-[rgba(255,255,255,0.31)] content-stretch cursor-pointer flex items-center justify-center px-[30px] py-[14px] rounded-[56px] transition-[transform,background-color,box-shadow] duration-200 ease-out hover:bg-[rgba(255,255,255,0.55)] hover:scale-[1.06] hover:shadow-[0px_10px_28px_rgba(0,0,0,0.28)] hover:ring-1 hover:ring-white/60 active:scale-[0.98]" />
         </a>
         <a
           href="/pdfs/resume.pdf?v=3"
@@ -602,7 +602,7 @@ export default function Frame() {
           aria-label="View resume (PDF, opens in new tab)"
           className="block cursor-pointer"
         >
-          <Frame1 label="View Resume" className="bg-[rgba(255,255,255,0.31)] content-stretch cursor-pointer flex items-center justify-center px-[36px] py-[18px] rounded-[68px] transition-[transform,background-color,box-shadow] duration-200 ease-out hover:bg-[rgba(255,255,255,0.55)] hover:scale-[1.06] hover:shadow-[0px_10px_28px_rgba(0,0,0,0.28)] hover:ring-1 hover:ring-white/60 active:scale-[0.98]" />
+          <Frame1 label="View Resume" className="bg-[rgba(255,255,255,0.31)] content-stretch cursor-pointer flex items-center justify-center px-[30px] py-[14px] rounded-[56px] transition-[transform,background-color,box-shadow] duration-200 ease-out hover:bg-[rgba(255,255,255,0.55)] hover:scale-[1.06] hover:shadow-[0px_10px_28px_rgba(0,0,0,0.28)] hover:ring-1 hover:ring-white/60 active:scale-[0.98]" />
         </a>
       </div>
       <div id="scroll-car" className="absolute z-[-1] flex h-[116.007px] items-center justify-center left-[calc(83.33%+119.09px)] top-[1758px] w-[115.113px]">
