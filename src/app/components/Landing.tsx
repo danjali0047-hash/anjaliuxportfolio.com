@@ -626,10 +626,10 @@ export default function Frame() {
       </div>
       <div className="[word-break:break-word] absolute contents left-[280px] top-[1190px]" data-node-id="427:254">
         <p className="absolute font-figtree font-semibold leading-[0.9] left-[280px] text-[#333] text-[30px] top-[1190px] whitespace-nowrap" data-node-id="427:255">
-          Freelancing
+          Irbinor
         </p>
         <p className="absolute font-figtree font-normal leading-[0.9] left-[280px] text-[#777] text-[19px] top-[1228px] whitespace-nowrap" data-node-id="427:256">
-          UX Designer
+          Graphic Designer
         </p>
         <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1196px] w-[272px]" data-node-id="427:257">
           Dec 2025 - Present
@@ -637,8 +637,8 @@ export default function Frame() {
         <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1258px] w-[609px]" data-node-id="427:258">
           Collaborating with freelance clients to design seamless digital experiences, from initial concepts to polished high-fidelity interfaces.
         </p>
-        <div className="absolute h-[84px] left-[106px] top-[1200px] w-[83px]" data-name="freelancing-logo">
-          <img alt="Freelancing" className="absolute inset-0 max-w-none object-contain size-full" src={A.imgFreelancingLogo} />
+        <div className="absolute h-[84px] left-[106px] top-[1200px] w-[83px]" data-name="irbinor-logo">
+          <img alt="Irbinor" className="absolute inset-0 max-w-none object-contain size-full" src={A.imgIrbinorLogo} />
         </div>
       </div>
       <div className="absolute contents left-[112px] top-[1701px]" data-node-id="427:253">

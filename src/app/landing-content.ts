@@ -23,12 +23,12 @@ export type Experience = {
 /** Most recent first — the order both layouts read them in. */
 export const EXPERIENCE: Experience[] = [
   {
-    company: "Freelancing",
-    role: "UX Designer",
+    company: "Irbinor",
+    role: "Graphic Designer",
     dates: "Dec 2025 - Present",
     blurb:
       "Collaborating with freelance clients to design seamless digital experiences, from initial concepts to polished high-fidelity interfaces.",
-    logo: A.imgFreelancingLogo,
+    logo: A.imgIrbinorLogo,
     logoW: 44,
     logoH: 44,
   },
