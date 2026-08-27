@@ -143,46 +143,25 @@ body {
   }
 }
 
-/* Roots' typing indicator — the hover cue resting in the plant. The bubble
-   breathes slowly so it catches the eye without nagging, and the dots run in
-   sequence the way a typing indicator does, which is what makes it read as
-   "about to speak" rather than as a decorative blob. */
-.roots-cue {
-  animation: rootsBob 3.2s ease-in-out infinite;
+/* Roots' plant tag — the hover cue staked in the foliage. It sways a couple of
+   degrees, the way a light label would, rather than pulsing: enough movement to
+   catch the eye, not enough to nag. */
+.roots-tag {
+  rotate: -7deg;
+  transform-origin: 50% 0;
+  animation: rootsSway 4.5s ease-in-out infinite;
 }
-@keyframes rootsBob {
+@keyframes rootsSway {
   0%,
   100% {
-    transform: translateY(0);
+    rotate: -7deg;
   }
   50% {
-    transform: translateY(-5px);
-  }
-}
-.roots-cue span {
-  animation: rootsDot 1.5s ease-in-out infinite;
-}
-.roots-cue span:nth-child(2) {
-  animation-delay: 0.18s;
-}
-.roots-cue span:nth-child(3) {
-  animation-delay: 0.36s;
-}
-@keyframes rootsDot {
-  0%,
-  60%,
-  100% {
-    opacity: 0.35;
-    transform: translateY(0);
-  }
-  30% {
-    opacity: 1;
-    transform: translateY(-3px);
+    rotate: -4deg;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .roots-cue,
-  .roots-cue span {
+  .roots-tag {
     animation: none;
   }
 }
