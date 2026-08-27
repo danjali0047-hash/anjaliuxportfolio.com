@@ -673,7 +673,7 @@ export default function Frame() {
           Graphic Designer
         </p>
         <p className="absolute font-figtree font-medium leading-[0.9] left-[calc(50%+89px)] text-[#333] text-[22px] top-[1196px] w-[272px]" data-node-id="427:257">
-          Aug 2026 - Present
+          July 2026 - Present
         </p>
         <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1258px] w-[609px]" data-node-id="427:258">
           Designed Instagram posts and motion graphic videos for the brand, carrying one visual language across static creatives and short-form motion.
