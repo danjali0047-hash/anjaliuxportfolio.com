@@ -424,6 +424,14 @@ export default function Frame() {
                 <span className="block whitespace-nowrap">hover to know</span>
                 <span className="block whitespace-nowrap">about me</span>
               </div>
+              {/* Hover target for the reveal. It lives inside the rotated box, so
+                  it tilts with the notebook instead of being an upright rectangle
+                  around it, and it is inset to the artwork's own opaque bounds —
+                  measured at 449x519 of this 473x534 box. The old target was a
+                  549x600 axis-aligned box outside all of this, 1.41x too large
+                  before the rotation was even counted, which is why the diary
+                  opened from empty space beside it. */}
+              <div data-notebook aria-hidden className="absolute left-[11px] top-[8px] h-[519px] w-[449px]" />
             </div>
           </div>
         </div>
@@ -565,6 +573,19 @@ export default function Frame() {
             {/* tail, pointing back at the plant */}
             <span className="absolute right-[-8px] top-[34px] size-[20px] rotate-45 rounded-[3px] bg-[#fdf8ef]" />
           </div>
+        </div>
+        {/* The cue that the plant is worth hovering. The diary and the AirPods
+            can carry writing because they have a flat face to write on; a
+            spray of leaves does not. So Roots gets a typing indicator instead —
+            a small bubble of dots resting in the foliage, which reads as
+            something about to speak and needs no words to say "hover me". It
+            sits where the full bubble's tail lands, so the hover looks like
+            this growing rather than a second thing appearing, and fades out as
+            the real bubble arrives. */}
+        <div className="roots-cue pointer-events-none absolute left-[26px] top-[224px] flex items-center gap-[5px] rounded-full bg-[#fdf8ef] px-[12px] py-[9px] shadow-[0_6px_16px_rgba(0,0,0,0.3)] transition-opacity duration-200 group-hover:opacity-0">
+          <span className="size-[6px] rounded-full bg-[#8a8272]" />
+          <span className="size-[6px] rounded-full bg-[#8a8272]" />
+          <span className="size-[6px] rounded-full bg-[#8a8272]" />
         </div>
       </div>
       <div className="-translate-x-1/2 absolute top-[700px] left-[calc(50%+0.5px)] flex items-center gap-[24px]">

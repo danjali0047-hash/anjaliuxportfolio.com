@@ -5,8 +5,9 @@ import { useEffect } from "react";
 /**
  * When the closed notebook ([data-notebook]) is hovered, a dark backdrop
  * (#hero-dim) fades in and an open-notebook image (#open-notebook) zooms into
- * the centre of the hero. The closed notebook stays put as the hover target,
- * so there is no flicker.
+ * the centre of the hero. The target is the closed notebook itself, which only
+ * fades to opacity 0 rather than being removed, so it keeps receiving the hover
+ * and there is no flicker.
  */
 export default function NotebookReveal() {
   useEffect(() => {

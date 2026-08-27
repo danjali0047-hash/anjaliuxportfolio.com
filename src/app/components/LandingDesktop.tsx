@@ -22,21 +22,6 @@ export default function LandingDesktop() {
       <ScaledCanvas width={LANDING_WIDTH} height={LANDING_HEIGHT}>
         <div style={{ width: LANDING_WIDTH, height: LANDING_HEIGHT, position: "relative" }}>
           <Landing />
-          {/* Transparent hover hit-area over the whole notebook (sits above the
-              overlapping collage photos so hovering anywhere on the notebook works) */}
-          <div
-            data-notebook
-            aria-hidden
-            style={{
-              position: "absolute",
-              left: 1339,
-              top: 267,
-              width: 549,
-              height: 600,
-              zIndex: 46,
-              cursor: "pointer",
-            }}
-          />
           {/* Dark backdrop revealed when the notebook is hovered */}
           <div
             id="hero-dim"

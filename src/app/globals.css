@@ -143,6 +143,50 @@ body {
   }
 }
 
+/* Roots' typing indicator — the hover cue resting in the plant. The bubble
+   breathes slowly so it catches the eye without nagging, and the dots run in
+   sequence the way a typing indicator does, which is what makes it read as
+   "about to speak" rather than as a decorative blob. */
+.roots-cue {
+  animation: rootsBob 3.2s ease-in-out infinite;
+}
+@keyframes rootsBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.roots-cue span {
+  animation: rootsDot 1.5s ease-in-out infinite;
+}
+.roots-cue span:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.roots-cue span:nth-child(3) {
+  animation-delay: 0.36s;
+}
+@keyframes rootsDot {
+  0%,
+  60%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .roots-cue,
+  .roots-cue span {
+    animation: none;
+  }
+}
+
 /* Transparent click targets laid over buttons that are painted into the
    case-study artwork (e.g. Pune Metro's "View Prototype" pill). Invisible at
    rest so the slide looks untouched, with a soft ring on hover/focus so the
