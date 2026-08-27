@@ -27,7 +27,7 @@ export const EXPERIENCE: Experience[] = [
     role: "Graphic Designer",
     dates: "Dec 2025 - Present",
     blurb:
-      "Collaborating with freelance clients to design seamless digital experiences, from initial concepts to polished high-fidelity interfaces.",
+      "Designed Instagram posts and motion graphic videos for the brand, carrying one visual language across static creatives and short-form motion.",
     logo: A.imgIrbinorLogo,
     logoW: 44,
     logoH: 44,

@@ -635,7 +635,7 @@ export default function Frame() {
           Dec 2025 - Present
         </p>
         <p className="absolute font-figtree font-normal leading-[normal] left-[280px] text-[#999] text-[15px] top-[1258px] w-[609px]" data-node-id="427:258">
-          Collaborating with freelance clients to design seamless digital experiences, from initial concepts to polished high-fidelity interfaces.
+          Designed Instagram posts and motion graphic videos for the brand, carrying one visual language across static creatives and short-form motion.
         </p>
         <div className="absolute h-[84px] left-[118px] top-[1200px] w-[83px]" data-name="irbinor-logo">
           <img alt="Irbinor" className="absolute inset-0 max-w-none object-contain size-full" src={A.imgIrbinorLogo} />
