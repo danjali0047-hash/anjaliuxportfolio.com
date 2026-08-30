@@ -87,4 +87,4 @@ export const SECTIONS = {
   moreToLife: { title: "THERE'S ALWAYS MORE TO LIFE", sub: "Cheers to life (Click!!)" },
 } as const;
 
-export const RESUME_URL = "/pdfs/resume.pdf?v=3";
+export const RESUME_URL = "/pdfs/resume.pdf?v=4";
