@@ -62,7 +62,7 @@ export const PIECES: Piece[] = [
   },
   {
     title: "Irbinor Events - logo and social creatives",
-    caption: "Irbinor - Events",
+    caption: "Social media design",
     img: "/assets/graphic-design/irbinor.jpg",
     page: "/graphic-design/irbinor",
     cx: 711,
