@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import AutoVideo from "@/app/components/AutoVideo";
 import GraphicWorkShell from "@/app/components/GraphicWorkShell";
 import InstagramPost from "@/app/components/InstagramPost";
+import InstagramReel from "@/app/components/InstagramReel";
 
 export const metadata: Metadata = {
   title: "Irbinor Events — Social creatives | Anjali Dubey",
@@ -177,17 +177,18 @@ export default function IrbinorPage() {
             </p>
           </div>
 
-          <div className="order-1 flex justify-center md:order-2">
-            <div
-              className="w-full max-w-[330px] overflow-hidden rounded-[26px] bg-white p-2 shadow-[0_22px_60px_rgba(0,64,27,0.22)]"
-            >
-              <AutoVideo
-                src="/assets/irbinor/motion.mp4"
-                poster="/assets/irbinor/motion-poster.jpg"
-                ariaLabel="Irbinor Events launch reel — an animated 9:16 Instagram post introducing the brand"
-                className="block aspect-[9/16] w-full rounded-[18px] bg-white object-cover"
-              />
-            </div>
+          <div className="order-1 md:order-2">
+            <InstagramReel
+              handle="irbinor.events"
+              avatar="/assets/graphic-design/irbinor.jpg"
+              caption="Who is Irbinor? Weddings, concerts, corporate nights — one team behind all of it."
+              src="/assets/irbinor/motion.mp4"
+              poster="/assets/irbinor/motion-poster.jpg"
+              label="Irbinor Events launch reel — an animated 9:16 Instagram post introducing the brand"
+            />
+            <p className="font-figtree mt-5 text-center text-[13px] text-[#9a9a9a]">
+              Tap the speaker for sound
+            </p>
           </div>
         </div>
       </section>
