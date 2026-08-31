@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AutoVideo from "@/app/components/AutoVideo";
 import GraphicWorkShell from "@/app/components/GraphicWorkShell";
+import InstagramPost from "@/app/components/InstagramPost";
 
 export const metadata: Metadata = {
   title: "Irbinor Events — Social creatives | Anjali Dubey",
@@ -28,6 +29,31 @@ const SLIDES = [
   { n: 3, alt: "Corporate slide — a polaroid of a rooftop toast captioned “Big goals”, over “create corporate events that inspire together”" },
   { n: 4, alt: "Weddings slide — a polaroid of a couple under falling petals captioned “It’s a yes!”, over “craft your wedding moments you’ll hold onto forever”" },
   { n: 5, alt: "Closing slide — “We create stories that are larger than life with a last mile touch”, signed off with the Irbinor Events lockup" },
+];
+
+// The brand's own channels — where the two posts above were actually published.
+const CHANNELS = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/irbinor_pvt_ltd/",
+    primary: true,
+    filled: false,
+    paths: [
+      "M7.5 2.75h9A4.75 4.75 0 0 1 21.25 7.5v9a4.75 4.75 0 0 1-4.75 4.75h-9A4.75 4.75 0 0 1 2.75 16.5v-9A4.75 4.75 0 0 1 7.5 2.75Z",
+      "M12 8.05a3.95 3.95 0 1 1 0 7.9 3.95 3.95 0 0 1 0-7.9Z",
+      "M17.35 6.4h.01",
+    ],
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/irbinor/posts/?feedView=all",
+    primary: false,
+    filled: true,
+    paths: [
+      "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.25h4V21H3V9.25Z",
+      "M9.5 9.25h3.83v1.6h.05c.53-1 1.84-2.06 3.78-2.06 4.04 0 4.79 2.66 4.79 6.12V21h-4v-5.4c0-1.29-.03-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.86V21h-4V9.25Z",
+    ],
+  },
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -168,7 +194,7 @@ export default function IrbinorPage() {
 
       {/* ── carousel ───────────────────────────────────────────────────── */}
       <section className="px-6 py-16 sm:px-10 md:py-24" style={{ background: "#ffffff" }}>
-        <div className="mx-auto max-w-[1240px]">
+        <div className="mx-auto max-w-[1080px]">
           <div className="max-w-[640px]">
             <Eyebrow>Post two · Carousel</Eyebrow>
             <h2
@@ -187,28 +213,20 @@ export default function IrbinorPage() {
             </p>
           </div>
 
-          <ol className="mt-12 grid gap-7 sm:grid-cols-2 xl:grid-cols-3">
-            {SLIDES.map((s) => (
-              <li key={s.n} className="relative">
-                <div className="overflow-hidden rounded-[14px] shadow-[0_12px_34px_rgba(0,0,0,0.16)]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/assets/irbinor/post-${s.n}.jpg`}
-                    alt={s.alt}
-                    loading={s.n === 1 ? "eager" : "lazy"}
-                    decoding="async"
-                    className="block aspect-[4/5] w-full object-cover"
-                  />
-                </div>
-                <span
-                  className="font-figtree absolute left-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-bold tabular-nums text-white/90"
-                  style={{ background: "rgba(0,0,0,0.45)" }}
-                >
-                  {s.n} / {SLIDES.length}
-                </span>
-              </li>
-            ))}
-          </ol>
+          <div className="mt-12">
+            <InstagramPost
+              handle="irbinor.events"
+              avatar="/assets/graphic-design/irbinor.jpg"
+              caption="We create stories that are larger than life, with a last mile touch."
+              slides={SLIDES.map((s) => ({
+                src: `/assets/irbinor/post-${s.n}.jpg`,
+                alt: s.alt,
+              }))}
+            />
+            <p className="font-figtree mt-5 text-center text-[13px] text-[#9a9a9a]">
+              Swipe, or use the arrows, to move through the post
+            </p>
+          </div>
         </div>
       </section>
 
@@ -230,6 +248,41 @@ export default function IrbinorPage() {
           <p className="font-hand text-[26px] leading-none text-white/80">
             larger than life, with a last mile touch
           </p>
+
+          {/* Where this work actually lives. Buttons rather than links in a
+              sentence: they are the one thing to do at the end of the page, so
+              they are sized to be found rather than read past. */}
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+            {CHANNELS.map((c) => (
+              <a
+                key={c.label}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`font-figtree inline-flex items-center gap-2.5 rounded-full px-6 py-3 text-[14px] font-semibold transition-[transform,background-color,color] duration-200 ease-out hover:scale-[1.04] active:scale-[0.98] ${
+                  c.primary
+                    ? "bg-[#fdf8ef] text-[#00401b] hover:bg-white"
+                    : "text-white ring-1 ring-white/45 hover:bg-white hover:text-[#00401b]"
+                }`}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                  className="size-[18px] shrink-0"
+                  fill={c.filled ? "currentColor" : "none"}
+                  stroke={c.filled ? "none" : "currentColor"}
+                  strokeWidth={1.9}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {c.paths.map((d) => (
+                    <path key={d} d={d} />
+                  ))}
+                </svg>
+                {c.label}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
     </GraphicWorkShell>
