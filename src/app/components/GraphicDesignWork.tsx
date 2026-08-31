@@ -60,7 +60,16 @@ export const PIECES: Piece[] = [
     tilt: 2.4,
     pin: "#e8b23a",
   },
-  { title: "Graphic design piece 3", cx: 711, cy: 191, tilt: -1.8, pin: "#3f9d9b" },
+  {
+    title: "Irbinor Events - logo and social creatives",
+    caption: "Irbinor - Events",
+    img: "/assets/graphic-design/irbinor.jpg",
+    page: "/graphic-design/irbinor",
+    cx: 711,
+    cy: 191,
+    tilt: -1.8,
+    pin: "#3f9d9b",
+  },
 ];
 
 // cork-board.jpg — hung on the wall rather than filling the fold, so it sits
